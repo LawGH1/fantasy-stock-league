@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1500" height="500" fill="#0F1419"/>
+  <rect width="1500" height="500" fill="url(#grid)"/>
+
+  <!-- watermark -->
+  <text x="1530" y="470" text-anchor="end" font-family="Fraunces" font-weight="800" font-size="620" fill="#ffffff" fill-opacity="0.035">01</text>
+
+  <!-- brand row (left 300px kept clear for the X avatar overlay) -->
+  <rect x="330" y="52" width="40" height="40" rx="10" fill="#1DB874"/>
+  <text x="350" y="83" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="27" fill="#0F1419">F</text>
+  <text x="384" y="82" font-family="Fraunces" font-weight="800" font-size="27" fill="#ffffff">Fantasy Stock League</text>
+  <text x="690" y="81" font-family="IBM Plex Mono" font-weight="600" font-size="15" letter-spacing="2" fill="#98A2AE">$FSL · ROBINHOOD CHAIN</text>
+
+  <!-- headline, three lines -->
+  <text x="330" y="188" font-family="Fraunces" font-weight="800" font-size="82" fill="#ffffff">Draft <tspan font-weight="600" font-style="italic" fill="#1DB874">five</tspan> stocks.</text>
+  <text x="330" y="272" font-family="Fraunces" font-weight="800" font-size="82" fill="#ffffff">Beat the chain.</text>
+  <text x="330" y="356" font-family="Fraunces" font-weight="800" font-size="82" fill="#1DB874">Paid every hour.</text>
+
+  <!-- sub line -->
+  <text x="330" y="404" font-family="Inter" font-weight="500" font-size="21" fill="#C9D0D8">A new round at the top of every hour, 24/7. Top ten split the pot. Scored by on-chain prices.</text>
+
+  <!-- ticker strip -->
+  <rect x="0" y="436" width="1500" height="64" fill="#1B222B"/>
+  <line x1="0" y1="436" x2="1500" y2="436" stroke="#2A333D" stroke-width="1"/>
+  <g font-family="IBM Plex Mono" font-weight="600" font-size="19">
+    <text x="330" y="476" fill="#ffffff">NVDA <tspan fill="#1DB874">+3.06%</tspan></text>
+    <text x="540" y="476" fill="#ffffff">SPCX <tspan fill="#FF7A66">-1.92%</tspan></text>
+    <text x="750" y="476" fill="#ffffff">GME <tspan fill="#1DB874">+3.38%</tspan></text>
+    <text x="940" y="476" fill="#ffffff">GLD <tspan fill="#1DB874">+0.24%</tspan></text>
+    <text x="1130" y="476" fill="#ffffff">TSLA <tspan fill="#FF7A66">-0.18%</tspan></text>
+    <text x="1340" y="476" fill="#ffffff">MSTR <tspan fill="#1DB874">+2.86%</tspan></text>
+  </g>
+</svg>
