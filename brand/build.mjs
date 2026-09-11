@@ -1,31 +1,50 @@
 // Builds pfp.png, banner.png, favicon-192.png.  Run:  node brand/build.mjs
-// Concept: minimal. Dark ground, white FSL, one green rising line. Banner adds five clean logo circles.
+// Concept: minimal with one layer of depth. Faint grid, soft green glow, FSL in white, a green price line.
+// On the banner, five stock logos sit on the line as its rising points.
 import { Resvg } from "@resvg/resvg-js";
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 
 const fontFiles = readdirSync("brand/fonts").filter(f => f.endsWith(".ttf")).map(f => "brand/fonts/" + f);
 const logo = t => "data:image/png;base64," + readFileSync(`logos/${t}.png`).toString("base64");
-const badge = (t, x, y, r) => `<g transform="translate(${x} ${y})"><circle r="${r}" fill="#fff"/><image href="${logo(t)}" x="${-r}" y="${-r}" width="${r * 2}" height="${r * 2}" clip-path="url(#c${r})" preserveAspectRatio="xMidYMid slice"/></g>`;
+const badge = (t, x, y, r) => `<g transform="translate(${x} ${y})"><circle r="${r + 6}" fill="#0F1419"/><circle r="${r}" fill="#fff"/><image href="${logo(t)}" x="${-r}" y="${-r}" width="${r * 2}" height="${r * 2}" clip-path="url(#c${r})" preserveAspectRatio="xMidYMid slice"/></g>`;
+const GRID = `<pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1.5"/></pattern>`;
 
 const pfp = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>${GRID}
+    <radialGradient id="glow" cx="0.5" cy="0.62" r="0.5"><stop offset="0" stop-color="#1DB874" stop-opacity="0.26"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></radialGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1DB874" stop-opacity="0.35"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></linearGradient>
+  </defs>
   <rect width="800" height="800" fill="#0F1419"/>
-  <text x="400" y="452" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="300" letter-spacing="-6" fill="#ffffff">FSL</text>
-  <path d="M212 560 L330 522 L420 540 L520 490 L590 502 L640 470" fill="none" stroke="#1DB874" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="800" height="800" fill="url(#grid)"/>
+  <rect width="800" height="800" fill="url(#glow)"/>
+  <text x="400" y="430" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="290" letter-spacing="-6" fill="#ffffff">FSL</text>
+  <!-- mini chart under the letters -->
+  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478 L620 660 L190 660 Z" fill="url(#area)"/>
+  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478" fill="none" stroke="#1DB874" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#0F1419" stroke="#1DB874" stroke-width="8">
+    <circle cx="290" cy="552" r="11"/><circle cx="470" cy="512" r="11"/><circle cx="620" cy="478" r="11"/>
+  </g>
 </svg>`;
 
 const banner = `<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
-  <defs><clipPath id="c44"><circle r="44"/></clipPath></defs>
+  <defs>${GRID}<clipPath id="c40"><circle r="40"/></clipPath>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1DB874" stop-opacity="0.22"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></linearGradient>
+  </defs>
   <rect width="1500" height="500" fill="#0F1419"/>
-  <!-- left 300px clear for the avatar -->
-  <text x="340" y="214" font-family="Fraunces" font-weight="800" font-size="56" fill="#ffffff">Fantasy Stock League</text>
-  <text x="340" y="268" font-family="Inter" font-weight="500" font-size="25" fill="#98A2AE">Draft five stocks. <tspan fill="#1DB874">Paid every hour.</tspan></text>
-  <text x="340" y="314" font-family="IBM Plex Mono" font-weight="600" font-size="14" letter-spacing="3" fill="#5C6670">$FSL  ·  ROBINHOOD CHAIN</text>
-  <!-- five logos, one row -->
-  ${badge("NVDA", 1062, 250, 44)}
-  ${badge("TSLA", 1160, 250, 44)}
-  ${badge("AAPL", 1258, 250, 44)}
-  ${badge("GME", 1356, 250, 44)}
-  ${badge("SPCX", 1454, 250, 44)}
+  <rect width="1500" height="500" fill="url(#grid)"/>
+  <!-- price line across the banner; logos sit on its points on the right -->
+  <path d="M0 400 L160 372 L300 392 L460 350 L640 366 L820 320 L1000 340 L1110 290 L1220 305 L1330 235 L1440 200 L1500 175 L1500 500 L0 500 Z" fill="url(#area)"/>
+  <path d="M0 400 L160 372 L300 392 L460 350 L640 366 L820 320 L1000 340 L1110 290 L1220 305 L1330 235 L1440 200 L1500 175" fill="none" stroke="#1DB874" stroke-width="5" stroke-linejoin="round" stroke-opacity="0.9"/>
+  <!-- left copy (left 300px clear for the avatar) -->
+  <text x="340" y="196" font-family="Fraunces" font-weight="800" font-size="58" fill="#ffffff">Fantasy Stock League</text>
+  <text x="340" y="252" font-family="Inter" font-weight="500" font-size="25" fill="#C9D0D8">Draft five stocks. <tspan fill="#1DB874">Paid every hour.</tspan></text>
+  <text x="340" y="298" font-family="IBM Plex Mono" font-weight="600" font-size="14" letter-spacing="3" fill="#7A8592">$FSL  ·  ROBINHOOD CHAIN</text>
+  <!-- five logos on the line -->
+  ${badge("GME", 1000, 340, 40)}
+  ${badge("AAPL", 1110, 290, 40)}
+  ${badge("TSLA", 1220, 305, 40)}
+  ${badge("NVDA", 1330, 235, 40)}
+  ${badge("SPCX", 1440, 200, 40)}
 </svg>`;
 
 function render(svg, out, width) {

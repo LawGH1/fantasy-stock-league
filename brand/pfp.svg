@@ -1,5 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs><pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1.5"/></pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.62" r="0.5"><stop offset="0" stop-color="#1DB874" stop-opacity="0.26"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></radialGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1DB874" stop-opacity="0.35"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></linearGradient>
+  </defs>
   <rect width="800" height="800" fill="#0F1419"/>
-  <text x="400" y="452" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="300" letter-spacing="-6" fill="#ffffff">FSL</text>
-  <path d="M212 560 L330 522 L420 540 L520 490 L590 502 L640 470" fill="none" stroke="#1DB874" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="800" height="800" fill="url(#grid)"/>
+  <rect width="800" height="800" fill="url(#glow)"/>
+  <text x="400" y="430" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="290" letter-spacing="-6" fill="#ffffff">FSL</text>
+  <!-- mini chart under the letters -->
+  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478 L620 660 L190 660 Z" fill="url(#area)"/>
+  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478" fill="none" stroke="#1DB874" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#0F1419" stroke="#1DB874" stroke-width="8">
+    <circle cx="290" cy="552" r="11"/><circle cx="470" cy="512" r="11"/><circle cx="620" cy="478" r="11"/>
+  </g>
 </svg>
