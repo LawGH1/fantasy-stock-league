@@ -515,7 +515,10 @@ const fmt=n=>n==null?"—":(n>=1000?n.toLocaleString(undefined,{maximumFractionD
 const pct=n=>n==null?"—":(n>0?"+":"")+n.toFixed(2)+"%";
 const logo=t=>{ const src=(window.LOGOS&&window.LOGOS[t])||`logos/${t}.png`; return `<span class="logo"><img src="${src}" alt="" onerror="this.parentNode.textContent='${t.slice(0,2)}'"></span>`; };
 const spent=()=>picks.reduce((s,t)=>s+byT(t)[3],0);
-const canPick=a=>picks.length<MAXPICKS && spent()+a[3]<=BUDGET;
+// A pick is legal only if it fits the budget AND leaves at least one point for every slot still to fill,
+// so you can never end up with money gone and slots empty. The cheapest stock costs one point.
+const MINCOST=Math.min(...ASSETS.map(a=>a[3]));
+const canPick=a=>picks.length<MAXPICKS && spent()+a[3]+(MAXPICKS-picks.length-1)*MINCOST<=BUDGET;
 
 function render(){
   const grid=$("#assets"); grid.innerHTML="";
@@ -526,7 +529,7 @@ function render(){
     d.className="asset"+(on?" on":"")+(!on&&!canPick(a)?" off":"");
     d.innerHTML=`<div class="h">${logo(a[0])}<div><div class="t">${a[0]}</div><div class="n">${a[1]}</div></div><span class="cost">${a[3]} pt</span></div>
       <div class="p"><span class="muted">${p?"$"+fmt(p.price):"…"}</span><span class="${p&&p.ch>=0?"up":"down"}">${p?pct(p.ch):""}</span></div>`;
-    d.onclick=()=>{ if(on){picks=picks.filter(t=>t!==a[0]);} else if(canPick(a)){picks.push(a[0]);} else {toast(picks.length>=MAXPICKS?"All five slots are full.":"Not enough budget left for that one.");return;} save(); render(); };
+    d.onclick=()=>{ if(on){picks=picks.filter(t=>t!==a[0]);} else if(canPick(a)){picks.push(a[0]);} else {toast(picks.length>=MAXPICKS?"All five slots are full.":"That would leave you unable to fill all five slots.");return;} save(); render(); };
     grid.appendChild(d);
   }
   $("#slots").innerHTML=Array.from({length:MAXPICKS},(_,i)=>{
