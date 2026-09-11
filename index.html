@@ -196,6 +196,24 @@
   footer{background:var(--ink);color:var(--muted-dark);padding:60px 0 70px;font-size:14px}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
   footer .brand{color:#fff;font-size:18px}
+
+  /* motion layer */
+  .hero .aurora{position:absolute;inset:-25%;pointer-events:none;background:radial-gradient(700px 480px at 22% 35%,rgba(29,184,116,.20),transparent 62%),radial-gradient(560px 560px at 78% 72%,rgba(242,181,68,.07),transparent 60%);filter:blur(46px);animation:drift 22s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(3%,4%,0) scale(1.08)}}
+  .hero .spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--sx,50%) var(--sy,40%),rgba(29,184,116,.13),transparent 65%);opacity:0;transition:opacity .4s}
+  .hero:hover .spot{opacity:1}
+  .hero .heroline{position:absolute;left:0;right:0;bottom:0;width:100%;height:56%;pointer-events:none;opacity:.55}
+  .hero h1 .w{display:inline-block;will-change:transform,opacity}
+  [data-pre]{opacity:0}
+  .asset{position:relative;overflow:hidden}
+  .asset::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(29,184,116,.16),transparent 62%);opacity:0;transition:opacity .25s;pointer-events:none}
+  .asset:hover::before{opacity:1}
+  .asset>*{position:relative}
+  .pod{transform-origin:bottom}
+  .btn{transition:transform .15s,box-shadow .15s,background .15s}
+  .btn.green:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(29,184,116,.28)}
+  .lineup .score .v{transition:none}
+  @media(prefers-reduced-motion:reduce){[data-pre]{opacity:1}.hero .aurora{animation:none}}
 </style>
 </head>
 <body>
@@ -217,18 +235,25 @@
 </nav>
 
 <header class="hero dark">
+  <div class="aurora"></div>
+  <div class="spot"></div>
+  <svg class="heroline" viewBox="0 0 1500 400" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1DB874" stop-opacity=".22"/><stop offset="1" stop-color="#1DB874" stop-opacity="0"/></linearGradient></defs>
+    <path id="hl-area" d="M0 330 L150 300 L300 320 L460 270 L620 290 L800 220 L960 245 L1120 170 L1300 190 L1500 110 L1500 400 L0 400 Z" fill="url(#hl)" opacity="0"/>
+    <path id="hl-line" d="M0 330 L150 300 L300 320 L460 270 L620 290 L800 220 L960 245 L1120 170 L1300 190 L1500 110" fill="none" stroke="#1DB874" stroke-width="3" stroke-linejoin="round"/>
+  </svg>
   <div class="big">01</div>
   <div class="wrap grid">
     <div>
       <div class="eyebrow">Season one · Robinhood Chain</div>
       <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br>Paid every hour.</h1>
-      <p class="lead">Fantasy stocks at memecoin speed. Build a five-stock portfolio from Nvidia, gold, GameStop and more, the on-chain price is the scoreboard, and a new round opens at the top of every hour, all day, all night, weekends too.</p>
-      <div class="actions">
+      <p class="lead" data-pre>Fantasy stocks at memecoin speed. Build a five-stock portfolio from Nvidia, gold, GameStop and more, the on-chain price is the scoreboard, and a new round opens at the top of every hour, all day, all night, weekends too.</p>
+      <div class="actions" data-pre>
         <a class="btn green" href="#draft">Build your portfolio</a>
         <a class="btn outline-light" href="#week">See how a round works</a>
       </div>
     </div>
-    <div class="board">
+    <div class="board" data-pre>
       <div class="top"><span class="t">Round scoreboard</span><span class="live"><i></i>Opens at launch</span></div>
       <div class="rows">
         <div class="cell"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
@@ -466,6 +491,78 @@ async function loadPrices(){
 function countdown(){ const n=new Date(); const s=3600-(n.getMinutes()*60+n.getSeconds()); $("#s-next").textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
 countdown(); setInterval(countdown,1000);
 render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js"></script>
+<script>
+(function(){
+  if(!window.anime) return;
+  const {animate, stagger, createTimeline, svg} = anime;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* hero intro */
+  const h1=document.querySelector(".hero h1");
+  h1.innerHTML=h1.innerHTML.split(/<br\s*\/?>/i).map(line=>line.trim().split(/\s+/).map(w=>`<span class="w" style="opacity:0">${w}</span>`).join(" ")).join("<br>");
+  if(!reduce){
+    const tl=createTimeline({defaults:{ease:"outExpo"}});
+    tl.add(".hero h1 .w",{opacity:[0,1],translateY:[36,0],rotate:[2,0],duration:900,delay:stagger(60)},0)
+      .add(".hero .lead",{opacity:[0,1],translateY:[18,0],duration:700},350)
+      .add(".hero .actions",{opacity:[0,1],translateY:[14,0],duration:600},500)
+      .add(".hero .board",{opacity:[0,1],translateX:[40,0],duration:900},300)
+      .add(svg.createDrawable("#hl-line"),{draw:["0 0","0 1"],duration:1800,ease:"inOutSine"},200)
+      .add("#hl-area",{opacity:[0,1],duration:900},1400);
+  } else { document.querySelectorAll("[data-pre],.hero h1 .w").forEach(e=>e.style.opacity=1); }
+
+  /* cursor spotlight in hero */
+  const hero=document.querySelector(".hero"), spot=hero.querySelector(".spot");
+  hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();spot.style.setProperty("--sx",(e.clientX-r.left)+"px");spot.style.setProperty("--sy",(e.clientY-r.top)+"px");});
+
+  /* scroll reveals */
+  const reveal=(sel,opts)=>{
+    const els=[...document.querySelectorAll(sel)]; if(!els.length) return;
+    els.forEach(e=>e.style.opacity=0);
+    const io=new IntersectionObserver(entries=>{
+      const hit=entries.filter(x=>x.isIntersecting).map(x=>x.target); if(!hit.length) return;
+      hit.forEach(t=>io.unobserve(t));
+      animate(hit,Object.assign({opacity:[0,1],translateY:[28,0],duration:800,ease:"outExpo",delay:stagger(90)},opts||{}));
+    },{threshold:.15,rootMargin:"0px 0px -8% 0px"});
+    els.forEach(e=>io.observe(e));
+  };
+  if(!reduce){
+    reveal(".head"); reveal(".moment",{translateY:[34,0]}); reveal(".step"); reveal(".rule",{translateX:[-20,0],translateY:0});
+    reveal(".prize-split > div"); reveal(".pod",{scaleY:[0.2,1],translateY:0,opacity:[0,1],duration:900,delay:stagger(120,{from:"center"})});
+    reveal("#rest div",{translateY:[16,0],delay:stagger(50)}); reveal(".why .w"); reveal(".flow .f",{translateX:[24,0],translateY:0});
+    reveal(".status li",{translateX:[-14,0],translateY:0,delay:stagger(70)}); reveal(".draft-grid > *",{translateY:[30,0]}); reveal(".filters",{translateY:[10,0]});
+  }
+
+  /* draft interactions: spotlight follows cursor, pop on pick, slots slide in */
+  const grid=document.querySelector("#assets");
+  grid.addEventListener("pointermove",e=>{const c=e.target.closest(".asset"); if(!c) return; const r=c.getBoundingClientRect(); c.style.setProperty("--mx",(e.clientX-r.left)+"px"); c.style.setProperty("--my",(e.clientY-r.top)+"px");});
+  let prevPicks=picks.length, prevScore=null;
+  const _render=render;
+  render=function(){
+    _render();
+    if(reduce) return;
+    const on=[...grid.querySelectorAll(".asset.on")];
+    if(picks.length>prevPicks){
+      const last=on.find(a=>a.querySelector(".t").textContent===picks[picks.length-1]);
+      if(last) animate(last,{scale:[1,1.05,1],duration:420,ease:"outBack"});
+      const slot=document.querySelectorAll(".slot.filled")[picks.length-1];
+      if(slot) animate(slot,{opacity:[0,1],translateX:[18,0],duration:450,ease:"outExpo"});
+    }
+    prevPicks=picks.length;
+    const sc=document.querySelector("#t-score").textContent;
+    if(sc!==prevScore&&prevScore!==null) animate("#t-score",{scale:[1.08,1],duration:500,ease:"outExpo"});
+    prevScore=sc;
+  };
+  grid.addEventListener("click",()=>{}); // render is called by the asset handlers; the wrapper above runs then
+
+  /* count-up helper for live numbers (used when the scoreboard is wired to the server) */
+  window.countUp=(el,to,opts)=>{ const o={v:parseFloat(el.textContent)||0}; animate(o,{v:to,duration:900,ease:"outExpo",onUpdate:()=>{el.textContent=(opts&&opts.fmt?opts.fmt(o.v):Math.round(o.v).toLocaleString());}}); };
+
+  /* countdown tick */
+  const next=document.querySelector("#s-next"); let lastSec=null;
+  setInterval(()=>{ const s=next.textContent; if(s!==lastSec&&lastSec!==null&&!reduce&&s.endsWith(":00")) animate(next,{scale:[1.06,1],duration:400}); lastSec=s; },1000);
+})();
 </script>
 </body>
 </html>
