@@ -22,8 +22,22 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
   h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-0.01em;margin:0}
   h1{font-size:clamp(44px,6.4vw,72px);line-height:1.04}
-  h2{font-size:clamp(28px,3.6vw,38px);line-height:1.15;margin-bottom:14px}
-  h3{font-size:19px;margin-bottom:6px}
+  h2{font-size:clamp(34px,4.4vw,48px);line-height:1.12;margin-bottom:16px}
+  h3{font-size:23px;margin-bottom:8px}
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
+  @media(max-width:860px){.rules{grid-template-columns:1fr}}
+  .rule{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .rule h3{font-size:20px;margin-bottom:10px}
+  .rule ul{margin:0;padding-left:18px}
+  .rule li{margin:6px 0;color:#2b2f36}
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+  @media(max-width:700px){.why{grid-template-columns:1fr}}
+  .why .w{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .why .w b{display:block;font-size:16px;margin-bottom:4px}
+  .flow{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .flow .f{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15px}
+  .flow .f:last-child{border-bottom:0}
+  .flow .f span:first-child{font-weight:600}
   p{margin:0 0 14px}
   .muted{color:var(--muted)}
   .small{font-size:13px}
@@ -203,9 +217,48 @@
       <h2>Three steps, one week</h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h3>Draft</h3><p class="muted">Pick five tokenized stocks from the Robinhood Chain registry. Twelve budget points. Nvidia and SpaceX cost four, gold and the S&amp;P cost one. Entries close Sunday night.</p></div>
-      <div class="step"><div class="num">2</div><h3>Score</h3><p class="muted">Monday open to Friday close. Each pick scores its percent move from the on-chain pool price. Your team score is the average. Leaderboard updates every 15 minutes.</p></div>
-      <div class="step"><div class="num">3</div><h3>Get paid</h3><p class="muted">Friday after the close, the top ten teams split the pot. Payouts go out from the league wallet as public transactions you can check on the explorer.</p></div>
+      <div class="step"><div class="num">1</div><h3>Draft</h3><p class="muted" style="font-size:16px">Pick five tokenized stocks from the Robinhood Chain registry. You have twelve budget points. Hot names like Nvidia and SpaceX cost four, steady ones like gold and the S&amp;P cost one. Entries close Sunday night before the market opens.</p></div>
+      <div class="step"><div class="num">2</div><h3>Score</h3><p class="muted" style="font-size:16px">Monday open to Friday close. Each pick scores its percent move, measured from the stock token's on-chain pool price. Your team score is the average of your five picks. The leaderboard updates every 15 minutes.</p></div>
+      <div class="step"><div class="num">3</div><h3>Get paid</h3><p class="muted" style="font-size:16px">Friday after the close, the top ten teams split the pot on a fixed table. Payouts go out from the league wallet as public transactions you can check on the explorer the same evening.</p></div>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <h3>Drafting</h3>
+        <ul>
+          <li>Five picks, no more, no fewer. Twelve points of budget.</li>
+          <li>Each stock has a fixed cost from one to four points. Costs are set for the season, not per event.</li>
+          <li>You can enter more than one team. Each team is its own entry.</li>
+          <li>Once entries close your team is locked for the week. No trades mid-event.</li>
+        </ul>
+      </div>
+      <div class="rule">
+        <h3>Scoring</h3>
+        <ul>
+          <li>Start price is the pool price at 9:30am ET Monday. End price is 4:00pm ET Friday.</li>
+          <li>Score per pick is the percent change between the two. Team score is the plain average of five.</li>
+          <li>Prices come from the deepest Uniswap pool for each stock token on Robinhood Chain, read from public trackers.</li>
+          <li>Ties are broken by the team entered first.</li>
+        </ul>
+      </div>
+      <div class="rule">
+        <h3>Entering</h3>
+        <ul>
+          <li>An entry is a transfer of FSL to the league wallet. Send it, your team is in.</li>
+          <li>Hold the holder threshold of FSL and one entry per week is free.</li>
+          <li>The entry price and threshold are posted before each event opens and do not change once it does.</li>
+          <li>Not available to US persons, in line with the stock tokens the league is scored on.</li>
+        </ul>
+      </div>
+      <div class="rule">
+        <h3>Payouts and proof</h3>
+        <ul>
+          <li>The pot is every entry for the week plus anything the league seeds. Top ten split it on the table below.</li>
+          <li>Payouts leave the league wallet within hours of the Friday close. Every one is a transaction link.</li>
+          <li>The scoring code is public. Anyone can rerun the week and get the same leaderboard.</li>
+          <li>The league wallet address is published before the first event, so the pot is visible all week.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -232,8 +285,23 @@
     <div>
       <div class="eyebrow">Token</div>
       <h2>$FSL</h2>
-      <p class="muted" style="font-size:17px">Launched on Pons on Robinhood Chain. Entries are paid in FSL. Hold enough and you get a free entry every week.</p>
+      <p class="muted" style="font-size:17px">FSL is the league's currency. It launches on Pons on Robinhood Chain, with a locked liquidity pool and no team allocation beyond a small published reserve used to seed the first pots.</p>
       <div class="ca" style="margin-top:18px"><span id="ca-text">Contract address posted here at launch</span><button class="btn ghost" id="copy" style="padding:8px 12px;font-size:13px" disabled>Copy</button></div>
+
+      <div class="eyebrow" style="margin-top:34px">Why hold it</div>
+      <div class="why">
+        <div class="w"><b>It is the entry ticket.</b>Every team in every event is paid for in FSL. More players means more FSL bought to enter.</div>
+        <div class="w"><b>Holders play free.</b>Hold the threshold and one entry per week costs nothing. That is a standing reason to keep a bag rather than sell it.</div>
+        <div class="w"><b>The pot buys it back.</b>A fixed slice of every weekly pot buys FSL on the open market. Bigger events, bigger buybacks, every Friday, posted with links.</div>
+        <div class="w"><b>Payouts are in FSL.</b>Winners are paid in the token, so a good week puts more of it in the hands of the people most likely to play again.</div>
+      </div>
+
+      <div class="eyebrow" style="margin-top:34px">Where each entry goes</div>
+      <div class="flow">
+        <div class="f"><span>Prize pot</span><span>Most of every entry. Split among the top ten on Friday.</span></div>
+        <div class="f"><span>Buyback</span><span>A fixed slice buys FSL from the pool. Bought tokens seed future pots or are burned, and the choice is posted each week.</span></div>
+        <div class="f"><span>League</span><span>A small slice keeps the scoring engine and the site running. Exact splits are published before Event 1 and do not change without notice.</span></div>
+      </div>
     </div>
     <div>
       <div class="eyebrow">Where it stands</div>
