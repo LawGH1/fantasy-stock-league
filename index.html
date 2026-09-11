@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fantasy Stock League</title>
-<meta name="description" content="Draft five stocks. Beat the chain. Split the pot. A weekly fantasy league on Robinhood Chain, scored by real on-chain prices and paid out every Friday.">
+<meta name="description" content="Draft five stocks. Beat the chain. Paid every hour. A fantasy league on Robinhood Chain with a new round every hour, scored by real on-chain prices, top ten paid at the top of the hour.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -216,22 +216,22 @@
   <div class="wrap grid">
     <div>
       <div class="eyebrow">Season one · Robinhood Chain</div>
-      <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br>Split the pot.</h1>
-      <p class="lead">Fantasy football, except your lineup is Nvidia, gold and GameStop, the scoreboard is the on-chain price, and Friday pays out to the top ten.</p>
+      <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br>Paid every hour.</h1>
+      <p class="lead">Fantasy football at memecoin speed. Your lineup is Nvidia, gold and GameStop, the scoreboard is the on-chain price, and a new round kicks off at the top of every hour, all day, all night, weekends too.</p>
       <div class="actions">
         <a class="btn green" href="#draft">Build your lineup</a>
-        <a class="btn outline-light" href="#week">See how a week works</a>
+        <a class="btn outline-light" href="#week">See how a round works</a>
       </div>
     </div>
     <div class="board">
-      <div class="top"><span class="t">Week 1 scoreboard</span><span class="live"><i></i>Opens at launch</span></div>
+      <div class="top"><span class="t">Round scoreboard</span><span class="live"><i></i>Opens at launch</span></div>
       <div class="rows">
         <div class="cell"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
         <div class="cell"><div class="k">Lineups in</div><div class="v" id="s-teams">—</div></div>
-        <div class="cell"><div class="k">Kickoff</div><div class="v">Mon 9:30</div></div>
-        <div class="cell"><div class="k">Final whistle</div><div class="v">Fri 4:00</div></div>
+        <div class="cell"><div class="k">Next kickoff</div><div class="v" id="s-next">--:--</div></div>
+        <div class="cell"><div class="k">Rounds paid</div><div class="v" id="s-paid">—</div></div>
       </div>
-      <p class="foot">Eastern time. Scores come from Robinhood Chain pool prices. Every payout is a public transaction.</p>
+      <p class="foot">Rounds run 24/7 because the pools never close. Scores come from Robinhood Chain pool prices. Every payout is a public transaction.</p>
     </div>
   </div>
 </header>
@@ -239,15 +239,15 @@
 <section id="week" class="paper">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">How a week plays out</div>
-      <h2>Four moments. Same time every week.</h2>
-      <p class="lead muted">No apps to install, no accounts to make. A lineup, a week of market moves, and a payout.</p>
+      <div class="eyebrow">How a round plays out</div>
+      <h2>Sixty minutes. Then it starts again.</h2>
+      <p class="lead muted">No apps to install, no accounts to make. A lineup, one hour of price moves, and a payout. Twenty-four rounds a day.</p>
     </div>
     <div class="timeline">
-      <div class="moment"><div class="when">Sunday · 11:59pm</div><h3>Lineups lock</h3><p class="muted">Entries close before the market opens. Send FSL to the league wallet with your lineup and you're in. After this, no changes.</p></div>
-      <div class="moment go"><div class="when">Monday · 9:30am</div><h3>Kickoff</h3><p class="muted">The opening pool price of every stock in your lineup is recorded. That's your starting line.</p></div>
-      <div class="moment"><div class="when">Mon to Fri</div><h3>Live scoring</h3><p class="muted">Each pick scores its percent move from kickoff. Your lineup's score is the average of five. The leaderboard refreshes every 15 minutes.</p></div>
-      <div class="moment go"><div class="when">Friday · 4:00pm</div><h3>Final whistle, then payday</h3><p class="muted">Closing prices lock the table. The top ten split the pot, and the transactions go out from the league wallet that evening.</p></div>
+      <div class="moment"><div class="when">Any time</div><h3>Enter</h3><p class="muted">Build a lineup and send FSL to the league wallet. You're in the next round. Enter at 2:40, you play the 3:00 round.</p></div>
+      <div class="moment go"><div class="when">:00 · Kickoff</div><h3>Prices recorded</h3><p class="muted">At the top of the hour the pool price of every stock in your lineup is locked in. That's your starting line. No changes after this.</p></div>
+      <div class="moment"><div class="when">:00 to :59</div><h3>Live scoring</h3><p class="muted">Each pick scores its percent move from kickoff. Your lineup's score is the average of five. The leaderboard refreshes every minute.</p></div>
+      <div class="moment go"><div class="when">:00 · Final whistle</div><h3>Payday, then the next round</h3><p class="muted">The top of the next hour locks the table. The top ten are paid from the league wallet within minutes, and the same tick kicks off the next round.</p></div>
     </div>
   </div>
 </section>
@@ -257,7 +257,7 @@
     <div class="head">
       <div class="eyebrow">Try the draft</div>
       <h2>Twelve points. Five slots. Choose wisely.</h2>
-      <p class="lead muted">The big names cost four points, the quiet ones cost one. The score you see is what this lineup did in the last 24 hours, using live prices from the chain. It saves in your browser, so when Week 1 opens you can enter it as is.</p>
+      <p class="lead muted">The big names cost four points, the quiet ones cost one. The score you see is what this lineup did in the last hour, using live prices from the chain. It saves in your browser, so when rounds open you can enter it as is.</p>
     </div>
     <div class="draft-grid">
       <div>
@@ -269,9 +269,9 @@
         <div id="slots"></div>
         <div class="meta"><span>Budget left <b id="b-left">12</b> / 12</span><span>Cost <b id="b-spent">0</b></span></div>
         <div class="score">
-          <div class="k">Lineup score, last 24h</div>
+          <div class="k">Lineup score, last hour</div>
           <div class="v" id="t-score">—</div>
-          <button class="btn green" id="enter" disabled>Enter Week 1</button>
+          <button class="btn green" id="enter" disabled>Enter next round</button>
           <button class="clear" id="clear">Clear lineup</button>
         </div>
         <div class="toast" id="toast"></div>
@@ -289,12 +289,12 @@
     <div class="rulebook">
       <div class="rule"><div class="n">1</div><div><h3>Five picks, twelve points</h3><p>Every stock has a fixed cost from one to four points, set for the whole season. You cannot go over budget and you cannot enter with fewer than five.</p></div></div>
       <div class="rule"><div class="n">2</div><div><h3>Prices come from the chain</h3><p>Each stock's score uses its deepest Uniswap pool on Robinhood Chain, read from public trackers. No judges, no oracles you have to trust, and no price we can quietly change.</p></div></div>
-      <div class="rule"><div class="n">3</div><div><h3>Kickoff to final whistle</h3><p>Start is the pool price at 9:30am ET Monday. End is 4:00pm ET Friday. Score per pick is the percent change. Lineup score is the plain average of five.</p></div></div>
-      <div class="rule"><div class="n">4</div><div><h3>Enter as many lineups as you like</h3><p>Each lineup is its own entry and its own shot at the top ten. Hold the holder threshold of FSL and one lineup a week is free.</p></div></div>
-      <div class="rule"><div class="n">5</div><div><h3>Locked means locked</h3><p>Once Sunday closes, no swaps and no late entries. Ties go to the lineup that entered first.</p></div></div>
-      <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The league wallet is public all week, so the pot is visible. The scoring code is public, so anyone can rerun the week and get the same table. Payouts are links, not promises.</p></div></div>
+      <div class="rule"><div class="n">3</div><div><h3>Kickoff to final whistle</h3><p>Start is the pool price at the top of the hour. End is the top of the next hour. Score per pick is the percent change. Lineup score is the plain average of five. Rounds run around the clock, weekends included, because the pools never close.</p></div></div>
+      <div class="rule"><div class="n">4</div><div><h3>Enter as many lineups as you like</h3><p>Each lineup is its own entry and its own shot at the top ten. Hold the holder threshold of FSL and one lineup an hour is free.</p></div></div>
+      <div class="rule"><div class="n">5</div><div><h3>Locked means locked</h3><p>Once a round kicks off, no swaps. Enter after :00 and you're in the next round, not this one. Ties go to the lineup that entered first.</p></div></div>
+      <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The league wallet is public, so the pot is visible all round. The scoring code is public, so anyone can rerun a round and get the same table. Payouts are automatic and every one is a transaction link, not a promise.</p></div></div>
     </div>
-    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens the league is scored on. Entry price and holder threshold are posted before each week opens and don't change once it has.</p>
+    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens the league is scored on. Entry price and holder threshold are posted before rounds open and don't change mid-round.</p>
   </div>
 </section>
 
@@ -303,8 +303,8 @@
     <div>
       <div class="eyebrow">Prizes</div>
       <h2>Top ten split the pot.</h2>
-      <p class="lead muted">The pot is every entry for the week plus whatever the league seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent week gets something back, not just a perfect one.</p>
-      <p class="muted">A slice of every pot buys back FSL on the open market. Amounts and transaction links are posted after each week.</p>
+      <p class="lead muted">The pot is every entry for the round plus whatever the league seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent hour gets something back, not just a perfect one.</p>
+      <p class="muted">A slice of every pot buys back FSL on the open market. Amounts and transaction links are posted after each round, twenty-four times a day.</p>
     </div>
     <div>
       <div class="podium">
@@ -322,23 +322,23 @@
     <div>
       <div class="eyebrow">The token</div>
       <h2>$FSL is the league's chips.</h2>
-      <p class="lead muted">You buy in with it, you get paid in it, and the pot buys it back every Friday. It launches on Pons on Robinhood Chain with a permanently locked liquidity pool and a small published reserve that seeds the first pots.</p>
+      <p class="lead muted">You buy in with it, you get paid in it, and the pot buys it back every hour. It launches on Pons on Robinhood Chain with a permanently locked liquidity pool and a small published reserve that seeds the first pots.</p>
       <div class="ca" style="margin-top:26px"><span id="ca-text">Contract address posted here at launch</span></div>
       <div class="why">
-        <div class="w"><b>It's the entry ticket.</b><span>Every lineup in every week is paid for in FSL. More players, more FSL bought to play.</span></div>
-        <div class="w"><b>Holders play free.</b><span>Hold the threshold and one lineup a week costs nothing. A reason to keep a bag, not flip it.</span></div>
-        <div class="w"><b>The pot buys it back.</b><span>A fixed slice of every pot buys FSL from the pool on Friday, posted with links.</span></div>
-        <div class="w"><b>Winners are paid in it.</b><span>A good week puts more FSL in the hands of the people most likely to play again.</span></div>
+        <div class="w"><b>It's the entry ticket.</b><span>Every lineup in every round is paid for in FSL. Twenty-four rounds a day means FSL gets bought to play around the clock.</span></div>
+        <div class="w"><b>Holders play free.</b><span>Hold the threshold and one lineup an hour costs nothing. A reason to keep a bag, not flip it.</span></div>
+        <div class="w"><b>The pot buys it back.</b><span>A fixed slice of every pot buys FSL from the pool at the top of each hour, posted with links.</span></div>
+        <div class="w"><b>Winners are paid in it.</b><span>A good round puts more FSL in the hands of the people most likely to play the next one.</span></div>
       </div>
     </div>
     <div>
       <div class="eyebrow">Where each entry goes</div>
       <div class="flow" style="margin-top:0">
-        <div class="f"><div class="pc">85%</div><p><b>Prize pot.</b> Split among the top ten lineups on Friday.</p></div>
-        <div class="f"><div class="pc">10%</div><p><b>Buyback.</b> Buys FSL from the pool. Bought tokens seed future pots or are burned, and which one is posted each week.</p></div>
+        <div class="f"><div class="pc">85%</div><p><b>Prize pot.</b> Split among the top ten lineups at the top of the hour.</p></div>
+        <div class="f"><div class="pc">10%</div><p><b>Buyback.</b> Buys FSL from the pool. Bought tokens seed future pots or are burned, and which one is posted daily.</p></div>
         <div class="f"><div class="pc">5%</div><p><b>League.</b> Keeps the scoring engine and this site running.</p></div>
       </div>
-      <p class="muted" style="margin-top:18px;font-size:14px">Proposed split for Season one. Final numbers are published before Week 1 opens and don't change without notice.</p>
+      <p class="muted" style="margin-top:18px;font-size:14px">Proposed split for Season one. Final numbers are published before the first round opens and don't change without notice.</p>
     </div>
   </div>
 </section>
@@ -349,10 +349,10 @@
     <h2 style="font-size:clamp(30px,3.6vw,40px)">Built in the open.</h2>
     <ul class="status" style="margin-top:28px">
       <li><span class="led g"></span><div><b>Draft engine.</b> Live prices, budget, five-slot lineups. Running on this page now.</div></li>
-      <li><span class="led g"></span><div><b>Scoring.</b> Percent moves from on-chain pool prices, recomputable by anyone. Code goes public before Week 1.</div></li>
+      <li><span class="led g"></span><div><b>Scoring.</b> Percent moves from on-chain pool prices, recomputable by anyone. Code goes public before the first round.</div></li>
       <li><span class="led a"></span><div><b>Entries.</b> A transfer of FSL to the league wallet. Opens with the token.</div></li>
-      <li><span class="led a"></span><div><b>Payouts.</b> Sent from the league wallet after each week, posted with transaction links.</div></li>
-      <li><span class="led x"></span><div><b>Draft the traders.</b> The chain's top wallets as picks, scored by their PnL. After the first weeks run.</div></li>
+      <li><span class="led a"></span><div><b>Payouts.</b> Sent automatically from the league wallet within minutes of each round, posted with transaction links.</div></li>
+      <li><span class="led x"></span><div><b>Draft the traders.</b> The chain's top wallets as picks, scored by their PnL. After the first rounds run.</div></li>
     </ul>
   </div>
 </section>
@@ -452,12 +452,14 @@ async function loadPrices(){
       for(const p of await r.json()){
         const k=p.baseToken.address.toLowerCase(); if(!want.includes(k)) continue;
         const liq=p.liquidity?.usd||0; const cur=prices[k];
-        if(!cur||liq>cur.liq) prices[k]={price:parseFloat(p.priceUsd),ch:p.priceChange?.h24??0,liq};
+        if(!cur||liq>cur.liq) prices[k]={price:parseFloat(p.priceUsd),ch:p.priceChange?.h1??0,liq};
       }
     }catch(e){}
   }
   render(); renderTicker();
 }
+function countdown(){ const n=new Date(); const s=3600-(n.getMinutes()*60+n.getSeconds()); $("#s-next").textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+countdown(); setInterval(countdown,1000);
 render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
 </script>
 </body>
