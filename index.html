@@ -214,11 +214,42 @@
   .btn.green:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(29,184,116,.28)}
   .lineup .score .v{transition:none}
   @media(prefers-reduced-motion:reduce){[data-pre]{opacity:1}.hero .aurora{animation:none}}
+
+  /* layer two */
+  .hero::before{display:none}
+  .hero .squares{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  .shine{background:linear-gradient(110deg,#1DB874 0%,#1DB874 40%,#B8FFDF 50%,#1DB874 60%,#1DB874 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+  @keyframes shine{from{background-position:120% 0}to{background-position:-120% 0}}
+  .board{transform-style:preserve-3d;will-change:transform}
+  .board .cell{transform:translateZ(14px)}
+  .ring{position:relative;width:64px;height:64px;flex:none}
+  .ring svg{transform:rotate(-90deg)}
+  .ring circle{fill:none;stroke-width:6}
+  .ring .bg{stroke:#2A333D}
+  .ring .fg{stroke:#1DB874;stroke-linecap:round;transition:stroke-dashoffset 1s linear}
+  .board .cell.next{display:flex;align-items:center;gap:16px}
+  .board .cell.next .v{font-size:28px}
+  .chapter{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted);opacity:.6;margin-bottom:10px}
+  .dark .chapter{color:var(--muted-dark)}
+  section{position:relative}
+  section .wm{position:absolute;right:0;top:-30px;width:42%;text-align:right;overflow:hidden;white-space:nowrap;font-family:var(--serif);font-weight:800;font-size:380px;line-height:1;color:currentColor;opacity:.035;pointer-events:none;user-select:none}
+  .asset::after{content:"";position:absolute;top:-60%;left:-80%;width:60%;height:220%;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:rotate(12deg) translateX(0);opacity:0;pointer-events:none}
+  .asset:hover::after{animation:glare .9s ease-out forwards}
+  @keyframes glare{from{opacity:.0;transform:rotate(12deg) translateX(0)}20%{opacity:.7}to{opacity:0;transform:rotate(12deg) translateX(320%)}}
+  .ticker2{background:#141A21;color:#fff;border-bottom:1px solid var(--line-dark);overflow:hidden;height:34px;display:flex;align-items:center}
+  .ticker2 .track{display:flex;gap:56px;white-space:nowrap;animation:tick2 90s linear infinite;font-family:var(--mono);font-size:12px;color:var(--muted-dark);padding-left:100%}
+  @keyframes tick2{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+  .ticker2 b{color:#fff;font-weight:600}
+  .magnet{will-change:transform}
+  .h2wrap{display:inline-block}
 </style>
 </head>
 <body>
 
 <div class="ticker"><div class="track" id="ticker"></div></div>
+<div class="ticker2"><div class="track" id="ticker2"></div></div>
+<div class="grain"></div>
 
 <nav>
   <div class="wrap">
@@ -235,6 +266,7 @@
 </nav>
 
 <header class="hero dark">
+  <canvas class="squares" id="squares"></canvas>
   <div class="aurora"></div>
   <div class="spot"></div>
   <svg class="heroline" viewBox="0 0 1500 400" preserveAspectRatio="none" aria-hidden="true">
@@ -246,11 +278,11 @@
   <div class="wrap grid">
     <div>
       <div class="eyebrow">Season one · Robinhood Chain</div>
-      <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br>Paid every hour.</h1>
+      <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br><span class="shine">Paid every hour.</span></h1>
       <p class="lead" data-pre>Fantasy stocks at memecoin speed. Build a five-stock portfolio from Nvidia, gold, GameStop and more, the on-chain price is the scoreboard, and a new round opens at the top of every hour, all day, all night, weekends too.</p>
       <div class="actions" data-pre>
-        <a class="btn green" href="#draft">Build your portfolio</a>
-        <a class="btn outline-light" href="#week">See how a round works</a>
+        <a class="btn green magnet" href="#draft">Build your portfolio</a>
+        <a class="btn outline-light magnet" href="#week">See how a round works</a>
       </div>
     </div>
     <div class="board" data-pre>
@@ -258,7 +290,7 @@
       <div class="rows">
         <div class="cell"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
         <div class="cell"><div class="k">Portfolios in</div><div class="v" id="s-teams">—</div></div>
-        <div class="cell"><div class="k">Next open</div><div class="v" id="s-next">--:--</div></div>
+        <div class="cell next"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" id="ring-fg" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"/></svg></div><div><div class="k">Next open</div><div class="v" id="s-next">--:--</div></div></div>
         <div class="cell"><div class="k">Rounds paid</div><div class="v" id="s-paid">—</div></div>
       </div>
       <p class="foot">Rounds run 24/7 because the pools never close. Scores come from Robinhood Chain pool prices. Every payout is a public transaction.</p>
@@ -267,8 +299,10 @@
 </header>
 
 <section id="week" class="paper">
+  <div class="wm">02</div>
   <div class="wrap">
     <div class="head">
+      <div class="chapter">CHAPTER 02</div>
       <div class="eyebrow">How a round plays out</div>
       <h2>Sixty minutes. Then it starts again.</h2>
       <p class="lead muted">No apps to install, no accounts to make. A portfolio, one hour of price moves, and a payout. Twenty-four rounds a day.</p>
@@ -283,8 +317,10 @@
 </section>
 
 <section id="draft" class="light">
+  <div class="wm">03</div>
   <div class="wrap">
     <div class="head">
+      <div class="chapter">CHAPTER 03</div>
       <div class="eyebrow">Try the draft</div>
       <h2>Twelve points. Five slots. Choose wisely.</h2>
       <p class="lead muted">The big names cost four points, the quiet ones cost one. The score you see is what this portfolio did in the last hour, using live prices from the chain. It saves in your browser, so when rounds open you can enter it as is.</p>
@@ -311,8 +347,10 @@
 </section>
 
 <section id="rules" class="dark">
+  <div class="wm">04</div>
   <div class="wrap">
     <div class="head">
+      <div class="chapter">CHAPTER 04</div>
       <div class="eyebrow">The rulebook</div>
       <h2>Short enough to read. Strict enough to trust.</h2>
     </div>
@@ -329,8 +367,10 @@
 </section>
 
 <section id="prizes" class="light">
+  <div class="wm">05</div>
   <div class="wrap prize-split">
     <div>
+      <div class="chapter">CHAPTER 05</div>
       <div class="eyebrow">Prizes</div>
       <h2>Top ten split the pot.</h2>
       <p class="lead muted">The pot is every entry for the round plus whatever the league seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent hour gets something back, not just a perfect one.</p>
@@ -348,8 +388,10 @@
 </section>
 
 <section id="token" class="dark">
+  <div class="wm">06</div>
   <div class="wrap token-grid">
     <div>
+      <div class="chapter">CHAPTER 06</div>
       <div class="eyebrow">The token</div>
       <h2>$FSL is the league's chips.</h2>
       <p class="lead muted">You buy in with it, you get paid in it, and the pot buys it back every hour. It launches on Pons on Robinhood Chain with a permanently locked liquidity pool and a small published reserve that seeds the first pots.</p>
@@ -497,11 +539,11 @@ render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
 (function(){
   if(!window.anime) return;
   const {animate, stagger, createTimeline, svg} = anime;
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]motion=1/.test(location.search);
 
   /* hero intro */
   const h1=document.querySelector(".hero h1");
-  h1.innerHTML=h1.innerHTML.split(/<br\s*\/?>/i).map(line=>line.trim().split(/\s+/).map(w=>`<span class="w" style="opacity:0">${w}</span>`).join(" ")).join("<br>");
+  h1.innerHTML=h1.innerHTML.split(/<br\s*\/?>/i).map(line=>{ line=line.trim(); if(line.includes("<span")) return `<span class="w" style="opacity:0">${line}</span>`; return line.split(/\s+/).map(w=>`<span class="w" style="opacity:0">${w}</span>`).join(" "); }).join("<br>");
   if(!reduce){
     const tl=createTimeline({defaults:{ease:"outExpo"}});
     tl.add(".hero h1 .w",{opacity:[0,1],translateY:[36,0],rotate:[2,0],duration:900,delay:stagger(60)},0)
@@ -559,9 +601,50 @@ render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
   /* count-up helper for live numbers (used when the scoreboard is wired to the server) */
   window.countUp=(el,to,opts)=>{ const o={v:parseFloat(el.textContent)||0}; animate(o,{v:to,duration:900,ease:"outExpo",onUpdate:()=>{el.textContent=(opts&&opts.fmt?opts.fmt(o.v):Math.round(o.v).toLocaleString());}}); };
 
-  /* countdown tick */
-  const next=document.querySelector("#s-next"); let lastSec=null;
+  /* countdown tick + ring */
+  const next=document.querySelector("#s-next"), ring=document.querySelector("#ring-fg"); let lastSec=null;
+  const tickRing=()=>{ const n=new Date(); const done=(n.getMinutes()*60+n.getSeconds())/3600; ring.style.strokeDashoffset=(169.6*(1-done)).toFixed(1); };
+  tickRing(); setInterval(tickRing,1000);
   setInterval(()=>{ const s=next.textContent; if(s!==lastSec&&lastSec!==null&&!reduce&&s.endsWith(":00")) animate(next,{scale:[1.06,1],duration:400}); lastSec=s; },1000);
+
+  /* squares background: drifting grid that lights up under the cursor */
+  const cv=document.querySelector("#squares"); if(cv&&!reduce){
+    const ctx=cv.getContext("2d"); let W,H,mx=-1e4,my=-1e4,off=0; const S=56;
+    const size=()=>{W=cv.width=cv.offsetWidth*devicePixelRatio;H=cv.height=cv.offsetHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);};
+    size(); addEventListener("resize",size);
+    hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
+    hero.addEventListener("pointerleave",()=>{mx=my=-1e4;});
+    (function frame(){ off=(off+0.25)%S; const w=cv.offsetWidth,h=cv.offsetHeight; ctx.clearRect(0,0,w,h);
+      for(let x=-S+off;x<w+S;x+=S) for(let y=-S+off*0.6;y<h+S;y+=S){
+        const d=Math.hypot(x+S/2-mx,y+S/2-my); const a=d<220?(1-d/220):0;
+        ctx.strokeStyle=`rgba(255,255,255,${0.045+a*0.12})`; ctx.lineWidth=1; ctx.strokeRect(x,y,S,S);
+        if(a>0){ctx.fillStyle=`rgba(29,184,116,${a*0.18})`; ctx.fillRect(x+1,y+1,S-2,S-2);}
+      }
+      requestAnimationFrame(frame); })();
+  }
+
+  /* tilted scoreboard card */
+  const board=document.querySelector(".board"); if(!reduce){
+    board.addEventListener("pointermove",e=>{const r=board.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;board.style.transform=`perspective(900px) rotateX(${(-py*8).toFixed(2)}deg) rotateY(${(px*10).toFixed(2)}deg)`;});
+    board.addEventListener("pointerleave",()=>animate(board,{rotateX:0,rotateY:0,duration:600,ease:"outExpo"}));
+  }
+
+  /* magnet buttons */
+  document.querySelectorAll(".magnet").forEach(b=>{ if(reduce) return;
+    b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);b.style.transform=`translate(${dx*0.18}px,${dy*0.25}px)`;});
+    b.addEventListener("pointerleave",()=>animate(b,{translateX:0,translateY:0,duration:500,ease:"outElastic(1,.6)"}));
+  });
+
+  /* decrypted titles: h2s scramble into place on reveal */
+  const CH="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@";
+  const scramble=el=>{ const final=el.textContent; let i=0; const n=final.length; const t0=performance.now(); const dur=Math.min(1400,300+n*26);
+    (function step(now){ const p=Math.min(1,(now-t0)/dur); const fixed=Math.floor(p*n);
+      el.textContent=final.split("").map((c,j)=>c===" "?" ":(j<fixed?c:CH[Math.floor(Math.random()*CH.length)])).join("");
+      if(p<1) requestAnimationFrame(step); else el.textContent=final; })(t0); };
+  if(!reduce){ const io2=new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){io2.unobserve(x.target);scramble(x.target);} }),{threshold:.6}); document.querySelectorAll("section h2").forEach(h=>io2.observe(h)); }
+
+  /* second ticker lane: names and costs, reversed direction */
+  document.querySelector("#ticker2").innerHTML=ASSETS.map(a=>`<span><b>${a[0]}</b> ${a[1]} · ${a[3]} pt</span>`).join("");
 })();
 </script>
 </body>
