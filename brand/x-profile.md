@@ -1,10 +1,7 @@
 # X profile for Fantasy Stock League
 
-## Handle options (check in order, take the first that is free)
-1. @fantasystocks
-2. @FSLonHood
-3. @fantasystockleague
-4. @playFSL
+## Handle
+@FantasyStocksRH  (live: https://x.com/FantasyStocksRH)
 
 ## Display name
 Fantasy Stock League
