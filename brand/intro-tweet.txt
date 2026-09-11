@@ -1,0 +1,27 @@
+Introducing Fantasy Stock League on Robinhood Chain.
+
+Robinhood put real stocks on chain. Nvidia, Tesla, SpaceX, gold, GameStop, all trading 24/7 as tokens. Nobody built a game on top of them. We did.
+
+How it works:
+
+Draft five stocks under a 12-point budget. Big names cost 4, quiet ones cost 1.
+
+At the top of every hour a round opens and the on-chain pool price of each stock in your portfolio is recorded. Sixty minutes later it closes. Each stock scores its percent move, your score is the average of five.
+
+The top ten portfolios split the pot. Payouts go out from the league wallet within minutes, and the next round opens on the same tick. 24 rounds a day, weekends included, because the pools never close.
+
+The tech:
+
+Prices come straight from the deepest Uniswap pool for each stock token on Robinhood Chain. No oracle, no judge, no number we can change.
+
+Entries are a transfer of $FSL to a public league wallet. Payouts are transactions from it. The scoring code is public so anyone can rerun a round and get the same table.
+
+$FSL is the league's chips. 85% of every entry goes to the pot, 10% buys $FSL back from the pool, 5% runs the league. Hold the threshold and one portfolio an hour is free.
+
+Launching on Pons with locked liquidity. No team allocation beyond a small published reserve, locked on chain for three months.
+
+The draft and the wheel are live now. No wallet needed to try it.
+
+fantasystockleague.app
+
+CA and first round time will be posted here. Not available to US persons. Not financial advice.

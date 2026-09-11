@@ -1,0 +1,76 @@
+=====================================================
+POST 1  (this is the pin)  ·  attach: thread-1.png
+=====================================================
+Introducing Fantasy Stock League on Robinhood Chain.
+
+Robinhood put real stocks on chain. Nvidia, Tesla, SpaceX, gold, GameStop, all trading 24/7 as tokens. Nobody built a game on top of them. We did.
+
+Draft five stocks under a 12-point budget. At the top of every hour a round opens and the on-chain price of each stock is recorded. Sixty minutes later it closes. Percent move per stock, average of five, top ten split the pot. Paid within minutes. 24 rounds a day.
+
+Prices come from the deepest Uniswap pool for each stock. No oracle, no judge. Entries are a transfer of $FSL to a public league wallet. Payouts are transactions from it. The scoring code is public.
+
+85% of every entry goes to the pot. 10% buys $FSL back. 5% runs the league.
+
+The draft and the wheel are live now. No wallet needed.
+
+https://fantasystockleague.app
+
+CA and first round time will be posted here. Not available to US persons. Not financial advice.
+
+
+=====================================================
+REPLY 2  (reply to post 1)  ·  attach: thread-2.png
+=====================================================
+One round. One hour.
+
+Opens at :00, closes at the next :00, then it starts again. 24 a day, weekends too.
+
+
+=====================================================
+REPLY 3  (reply to reply 2)  ·  attach: thread-3.png
+=====================================================
+Scoring is the percent move of each stock, averaged across your five.
+
+Prices are the on-chain pool price. Nothing to argue with.
+
+
+=====================================================
+REPLY 4  ·  attach: thread-4.png
+=====================================================
+Twelve points. Five slots.
+
+Nvidia costs 4. Gold costs 1. Choose wisely.
+
+
+=====================================================
+REPLY 5  ·  attach: wheel-spin.mp4
+=====================================================
+Can't decide? Spin.
+
+One spin, one stock. It only lands on stocks that still fit your budget.
+
+
+=====================================================
+REPLY 6  ·  attach: thread-6.png
+=====================================================
+Top ten split the pot.
+
+30 · 18 · 12 · 9 · 7 · 6 · 5 · 5 · 4 · 4
+
+
+=====================================================
+REPLY 7  ·  attach: thread-7.png
+=====================================================
+Where every entry goes.
+
+85% to the pot. 10% buys $FSL back. 5% runs the league.
+
+
+=====================================================
+REPLY 8  ·  attach: thread-8.png
+=====================================================
+Live now, no wallet needed.
+
+https://fantasystockleague.app
+
+CA and first round time will be posted here.
