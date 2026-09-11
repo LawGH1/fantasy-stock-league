@@ -3,36 +3,56 @@
     <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
       <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.5"/>
     </pattern>
+    <clipPath id="c22"><circle cx="0" cy="0" r="22"/></clipPath>
+    <clipPath id="c16"><circle cx="0" cy="0" r="16"/></clipPath>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1DB874" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#1DB874" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   <rect width="1500" height="500" fill="#0F1419"/>
   <rect width="1500" height="500" fill="url(#grid)"/>
 
-  <!-- watermark -->
-  <text x="1530" y="470" text-anchor="end" font-family="Fraunces" font-weight="800" font-size="620" fill="#ffffff" fill-opacity="0.035">01</text>
+  <!-- faint price line behind everything -->
+  <path d="M0 400 L200 360 L380 390 L560 300 L760 330 L940 220 L1140 250 L1320 140 L1500 170 L1500 436 L0 436 Z" fill="url(#fill)"/>
+  <path d="M0 400 L200 360 L380 390 L560 300 L760 330 L940 220 L1140 250 L1320 140 L1500 170" fill="none" stroke="#1DB874" stroke-opacity="0.35" stroke-width="4" stroke-linejoin="round"/>
 
-  <!-- brand row (left 300px kept clear for the X avatar overlay) -->
-  <rect x="330" y="52" width="40" height="40" rx="10" fill="#1DB874"/>
-  <text x="350" y="83" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="27" fill="#0F1419">F</text>
-  <text x="384" y="82" font-family="Fraunces" font-weight="800" font-size="27" fill="#ffffff">Fantasy Stock League</text>
-  <text x="690" y="81" font-family="IBM Plex Mono" font-weight="600" font-size="15" letter-spacing="2" fill="#98A2AE">$FSL · ROBINHOOD CHAIN</text>
+  <!-- brand row (left 300px kept clear for the X avatar) -->
+  <text x="330" y="82" font-family="IBM Plex Mono" font-weight="600" font-size="15" letter-spacing="2.5" fill="#98A2AE">FANTASY STOCK LEAGUE  ·  $FSL  ·  ROBINHOOD CHAIN</text>
 
-  <!-- headline, three lines -->
-  <text x="330" y="188" font-family="Fraunces" font-weight="800" font-size="82" fill="#ffffff">Draft <tspan font-weight="600" font-style="italic" fill="#1DB874">five</tspan> stocks.</text>
-  <text x="330" y="272" font-family="Fraunces" font-weight="800" font-size="82" fill="#ffffff">Beat the chain.</text>
-  <text x="330" y="356" font-family="Fraunces" font-weight="800" font-size="82" fill="#1DB874">Paid every hour.</text>
+  <!-- headline -->
+  <text x="330" y="182" font-family="Fraunces" font-weight="800" font-size="70" fill="#ffffff">Draft <tspan font-weight="600" font-style="italic" fill="#1DB874">five</tspan> stocks.</text>
+  <text x="330" y="258" font-family="Fraunces" font-weight="800" font-size="70" fill="#ffffff">Beat the chain.</text>
+  <text x="330" y="334" font-family="Fraunces" font-weight="800" font-size="70" fill="#1DB874">Paid every hour.</text>
+  <text x="330" y="392" font-family="Inter" font-weight="500" font-size="20" fill="#C9D0D8">New round at the top of every hour, 24/7. Top ten split the pot.</text>
 
-  <!-- sub line -->
-  <text x="330" y="404" font-family="Inter" font-weight="500" font-size="21" fill="#C9D0D8">A new round at the top of every hour, 24/7. Top ten split the pot. Scored by on-chain prices.</text>
+  <!-- portfolio card, right side -->
+  <g transform="translate(1030 46)">
+    <rect width="410" height="368" rx="22" fill="#1B222B" stroke="#2A333D"/>
+    <text x="26" y="40" font-family="IBM Plex Mono" font-weight="600" font-size="12" letter-spacing="2" fill="#98A2AE">YOUR PORTFOLIO</text>
+    <text x="384" y="40" text-anchor="end" font-family="IBM Plex Mono" font-weight="600" font-size="12" letter-spacing="2" fill="#F2B544">ROUND 14</text>
 
-  <!-- ticker strip -->
+    <g font-family="Inter" font-weight="600" font-size="17" fill="#ffffff">
+      <g transform="translate(26 84)"><text x="0" y="6" font-family="Fraunces" font-weight="800" font-size="18" fill="#1DB874">1</text><g transform="translate(44 0)"><circle r="22" fill="#fff"/><image href="{{LOGO:NVDA}}" x="-22" y="-22" width="44" height="44" clip-path="url(#c22)" preserveAspectRatio="xMidYMid slice"/></g><text x="80" y="6">NVDA</text><text x="358" y="6" text-anchor="end" font-family="IBM Plex Mono" fill="#1DB874">+3.06%</text></g>
+      <g transform="translate(26 140)"><text x="0" y="6" font-family="Fraunces" font-weight="800" font-size="18" fill="#1DB874">2</text><g transform="translate(44 0)"><circle r="22" fill="#fff"/><image href="{{LOGO:GME}}" x="-22" y="-22" width="44" height="44" clip-path="url(#c22)" preserveAspectRatio="xMidYMid slice"/></g><text x="80" y="6">GME</text><text x="358" y="6" text-anchor="end" font-family="IBM Plex Mono" fill="#1DB874">+3.38%</text></g>
+      <g transform="translate(26 196)"><text x="0" y="6" font-family="Fraunces" font-weight="800" font-size="18" fill="#1DB874">3</text><g transform="translate(44 0)"><circle r="22" fill="#fff"/><image href="{{LOGO:TSLA}}" x="-22" y="-22" width="44" height="44" clip-path="url(#c22)" preserveAspectRatio="xMidYMid slice"/></g><text x="80" y="6">TSLA</text><text x="358" y="6" text-anchor="end" font-family="IBM Plex Mono" fill="#FF7A66">-0.18%</text></g>
+      <g transform="translate(26 252)"><text x="0" y="6" font-family="Fraunces" font-weight="800" font-size="18" fill="#1DB874">4</text><g transform="translate(44 0)"><circle r="22" fill="#fff"/><image href="{{LOGO:AAPL}}" x="-22" y="-22" width="44" height="44" clip-path="url(#c22)" preserveAspectRatio="xMidYMid slice"/></g><text x="80" y="6">AAPL</text><text x="358" y="6" text-anchor="end" font-family="IBM Plex Mono" fill="#1DB874">+4.47%</text></g>
+      <g transform="translate(26 308)"><text x="0" y="6" font-family="Fraunces" font-weight="800" font-size="18" fill="#1DB874">5</text><g transform="translate(44 0)"><circle r="22" fill="#fff"/><image href="{{LOGO:SPCX}}" x="-22" y="-22" width="44" height="44" clip-path="url(#c22)" preserveAspectRatio="xMidYMid slice"/></g><text x="80" y="6">SPCX</text><text x="358" y="6" text-anchor="end" font-family="IBM Plex Mono" fill="#1DB874">+1.92%</text></g>
+    </g>
+    <line x1="26" y1="338" x2="384" y2="338" stroke="#2A333D"/>
+    <text x="26" y="360" font-family="IBM Plex Mono" font-weight="600" font-size="12" letter-spacing="2" fill="#98A2AE">SCORE</text>
+    <text x="384" y="362" text-anchor="end" font-family="IBM Plex Mono" font-weight="600" font-size="24" fill="#1DB874">+2.53%</text>
+  </g>
+
+  <!-- logo ticker strip -->
   <rect x="0" y="436" width="1500" height="64" fill="#1B222B"/>
   <line x1="0" y1="436" x2="1500" y2="436" stroke="#2A333D" stroke-width="1"/>
-  <g font-family="IBM Plex Mono" font-weight="600" font-size="19">
-    <text x="330" y="476" fill="#ffffff">NVDA <tspan fill="#1DB874">+3.06%</tspan></text>
-    <text x="540" y="476" fill="#ffffff">SPCX <tspan fill="#FF7A66">-1.92%</tspan></text>
-    <text x="750" y="476" fill="#ffffff">GME <tspan fill="#1DB874">+3.38%</tspan></text>
-    <text x="940" y="476" fill="#ffffff">GLD <tspan fill="#1DB874">+0.24%</tspan></text>
-    <text x="1130" y="476" fill="#ffffff">TSLA <tspan fill="#FF7A66">-0.18%</tspan></text>
-    <text x="1340" y="476" fill="#ffffff">MSTR <tspan fill="#1DB874">+2.86%</tspan></text>
+  <g font-family="IBM Plex Mono" font-weight="600" font-size="17">
+    <g transform="translate(346 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:GLD}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="372" y="474" fill="#fff">GLD <tspan fill="#1DB874">+0.24%</tspan></text>
+    <g transform="translate(560 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:MSTR}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="586" y="474" fill="#fff">MSTR <tspan fill="#1DB874">+2.86%</tspan></text>
+    <g transform="translate(774 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:PLTR}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="800" y="474" fill="#fff">PLTR <tspan fill="#FF7A66">-0.94%</tspan></text>
+    <g transform="translate(988 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:COIN}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="1014" y="474" fill="#fff">COIN <tspan fill="#1DB874">+3.09%</tspan></text>
+    <g transform="translate(1202 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:SOFI}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="1228" y="474" fill="#fff">SOFI <tspan fill="#1DB874">+5.72%</tspan></text>
+    <g transform="translate(1416 468)"><circle r="16" fill="#fff"/><image href="{{LOGO:AMD}}" x="-16" y="-16" width="32" height="32" clip-path="url(#c16)" preserveAspectRatio="xMidYMid slice"/></g><text x="1442" y="474" fill="#fff">AMD</text>
   </g>
 </svg>

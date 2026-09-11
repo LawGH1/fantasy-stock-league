@@ -1,14 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
   <defs>
     <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
-      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="2"/>
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2"/>
     </pattern>
+    <clipPath id="c1"><circle cx="0" cy="0" r="58"/></clipPath>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1DB874" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#1DB874" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   <rect width="800" height="800" fill="#0F1419"/>
   <rect width="800" height="800" fill="url(#grid)"/>
-  <!-- green mark -->
-  <rect x="190" y="190" width="420" height="420" rx="96" fill="#1DB874"/>
-  <text x="400" y="548" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="400" fill="#0F1419">F</text>
-  <!-- small up-tick, bottom right of the mark -->
-  <path d="M520 560 L560 520 L600 560" fill="none" stroke="#0F1419" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+
+  <!-- price line with five stops -->
+  <path d="M150 620 L280 540 L400 440 L520 330 L650 190 L650 800 L150 800 Z" fill="url(#fill)"/>
+  <path d="M80 660 L150 620 L280 540 L400 440 L520 330 L650 190 L720 130" fill="none" stroke="#1DB874" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- logo badges -->
+  <g transform="translate(150 620)"><circle r="66" fill="#0F1419"/><circle r="58" fill="#fff"/><image href="{{LOGO:AAPL}}" x="-58" y="-58" width="116" height="116" clip-path="url(#c1)" preserveAspectRatio="xMidYMid slice"/></g>
+  <g transform="translate(280 540)"><circle r="66" fill="#0F1419"/><circle r="58" fill="#fff"/><image href="{{LOGO:GME}}" x="-58" y="-58" width="116" height="116" clip-path="url(#c1)" preserveAspectRatio="xMidYMid slice"/></g>
+  <g transform="translate(400 440)"><circle r="66" fill="#0F1419"/><circle r="58" fill="#fff"/><image href="{{LOGO:TSLA}}" x="-58" y="-58" width="116" height="116" clip-path="url(#c1)" preserveAspectRatio="xMidYMid slice"/></g>
+  <g transform="translate(520 330)"><circle r="66" fill="#0F1419"/><circle r="58" fill="#fff"/><image href="{{LOGO:NVDA}}" x="-58" y="-58" width="116" height="116" clip-path="url(#c1)" preserveAspectRatio="xMidYMid slice"/></g>
+  <g transform="translate(650 190)"><circle r="66" fill="#0F1419"/><circle r="58" fill="#fff"/><image href="{{LOGO:SPCX}}" x="-58" y="-58" width="116" height="116" clip-path="url(#c1)" preserveAspectRatio="xMidYMid slice"/></g>
 </svg>
