@@ -355,9 +355,9 @@
       </div>
       <div class="wheel-cta">
         <h3>Can't decide? Spin.</h3>
-        <p>The wheel picks five stocks that fit the twelve-point budget and drops them straight into your portfolio. Spin again if you don't like the hand.</p>
+        <p>One spin, one stock. Whatever stops under the pointer goes into your next open slot. The wheel only lands on stocks that still fit your budget, so five spins is always a legal portfolio.</p>
         <button class="btn ink magnet" id="spin">Spin the wheel</button>
-        <div class="fine">Random picks are never better than good ones. But they are faster.</div>
+        <div class="fine">Mix it: pick a couple yourself, spin for the rest.</div>
       </div>
     </div>
     <div class="draft-grid">
@@ -687,21 +687,32 @@ render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
     const layout=()=>{ const R=wheel.offsetWidth/2-4; badges.forEach((b,i)=>{ const ang=(st.rot+i*360/N)*Math.PI/180; b.style.transform=`translate(${(Math.cos(ang)*R).toFixed(1)}px,${(Math.sin(ang)*R).toFixed(1)}px)`; }); };
     layout(); addEventListener("resize",layout);
     (function idleSpin(){ if(idle&&!spinning){ st.rot+=0.05; layout(); } requestAnimationFrame(idleSpin); })();
-    const hubBig=document.querySelector("#hub-big"), hubSub=document.querySelector("#hub-sub"), hubPicks=document.querySelector("#hub-picks");
-    const randomPortfolio=()=>{ for(let k=0;k<500;k++){ const pool=[...ASSETS].sort(()=>Math.random()-.5).slice(0,MAXPICKS); const cost=pool.reduce((s,a)=>s+a[3],0); if(cost<=BUDGET&&cost>=BUDGET-2) return pool; } return ASSETS.filter(a=>a[3]===2).slice(0,5); };
-    document.querySelector("#spin").onclick=()=>{
-      if(spinning) return; spinning=true;
-      badges.forEach(b=>b.classList.remove("hot","dim")); hubPicks.innerHTML=""; hubBig.textContent="…"; hubSub.textContent="spinning";
-      const chosen=randomPortfolio(); const target=st.rot+1440+Math.random()*360;
-      animate(st,{rot:target,duration:3400,ease:"outCubic",onUpdate:layout,onComplete:()=>{
-        picks=chosen.map(a=>a[0]); save(); render();
-        badges.forEach(b=>b.classList.add(picks.includes(b.dataset.t)?"hot":"dim"));
-        const cost=chosen.reduce((s,a)=>s+a[3],0);
-        hubBig.textContent=cost+"/12"; hubSub.textContent="points used";
-        hubPicks.innerHTML=chosen.map(a=>`<span>${a[0]}</span>`).join("");
-        animate("#hub-picks span",{opacity:[0,1],translateY:[8,0],delay:stagger(70),duration:400,ease:"outExpo"});
-        animate(badges.filter(b=>b.classList.contains("hot")),{scale:[1,1.25,1],delay:stagger(90),duration:600,ease:"outBack"});
-        setTimeout(()=>{ badges.forEach(b=>b.classList.remove("dim")); spinning=false; },900);
+    const hubBig=document.querySelector("#hub-big"), hubSub=document.querySelector("#hub-sub"), hubPicks=document.querySelector("#hub-picks"), spinBtn=document.querySelector("#spin");
+    const hub=()=>{
+      badges.forEach(b=>b.classList.toggle("hot",picks.includes(b.dataset.t)));
+      hubPicks.innerHTML=picks.map(t=>`<span>${t}</span>`).join("");
+      const full=picks.length>=MAXPICKS, none=!ASSETS.some(a=>!picks.includes(a[0])&&canPick(a));
+      if(full){ hubBig.textContent="5/5"; hubSub.textContent="portfolio full"; spinBtn.textContent="Portfolio full"; spinBtn.disabled=true; }
+      else if(none){ hubBig.textContent=BUDGET-spent(); hubSub.textContent="points left, nothing fits"; spinBtn.textContent="Nothing fits, clear a pick"; spinBtn.disabled=true; }
+      else { hubBig.textContent=`${picks.length}/5`; hubSub.textContent=picks.length?"picked · spin for the next":"stocks on the wheel"; if(!picks.length) hubBig.textContent=String(N); spinBtn.textContent=picks.length?"Spin for stock "+(picks.length+1):"Spin the wheel"; spinBtn.disabled=false; }
+    };
+    hub();
+    const _renderW=render; render=function(){ _renderW(); hub(); };
+    spinBtn.onclick=()=>{
+      if(spinning||spinBtn.disabled) return; spinning=true; idle=false;
+      const valid=ASSETS.map((a,i)=>({a,i})).filter(x=>!picks.includes(x.a[0])&&canPick(x.a));
+      const {a,i}=valid[Math.floor(Math.random()*valid.length)];
+      // rotate so badge i sits under the pointer at the top (-90deg), after 3 to 4 full turns
+      const want=-90-i*360/N; const turns=3+Math.floor(Math.random()*2);
+      let target=want; while(target<st.rot+turns*360) target+=360;
+      hubSub.textContent="spinning"; hubBig.textContent="…"; badges.forEach(b=>b.classList.remove("dim"));
+      animate(st,{rot:target,duration:3200,ease:"outCubic",onUpdate:layout,onComplete:()=>{
+        picks.push(a[0]); save(); render();
+        const b=badges[i]; animate(b,{scale:[1,1.4,1],duration:700,ease:"outBack"});
+        const slot=document.querySelectorAll(".slot.filled")[picks.length-1];
+        if(slot) animate(slot,{opacity:[0,1],translateX:[18,0],duration:450,ease:"outExpo"});
+        toast(`${a[0]} ${a[1]} added, ${a[3]} pt`);
+        setTimeout(()=>{ spinning=false; idle=!reduce; },1200);
       }});
     };
   }
