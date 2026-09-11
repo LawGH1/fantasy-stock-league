@@ -372,7 +372,8 @@
         <div class="score">
           <div class="k">Portfolio score, last hour</div>
           <div class="v" id="t-score">—</div>
-          <button class="btn green" id="enter" disabled>Enter next round</button>
+          <button class="btn green" id="enter" style="opacity:.55">Entries open at launch</button>
+          <div class="muted" style="font-size:13px;margin-top:10px;text-align:center">Your portfolio is saved here. When $FSL launches, this button enters it into the next round. Follow <a href="https://x.com/FantasyStockRH" target="_blank" rel="noopener" style="color:#fff">@FantasyStockRH</a> for the time.</div>
           <button class="clear" id="clear">Clear portfolio</button>
         </div>
         <div class="toast" id="toast"></div>
@@ -551,7 +552,7 @@ function renderTicker(){
 function save(){ try{localStorage.setItem("fsl-team",JSON.stringify(picks));}catch(e){} }
 function toast(m){ $("#toast").textContent=m; setTimeout(()=>{ if($("#toast").textContent===m) $("#toast").textContent=""; },2500); }
 $("#clear").onclick=()=>{picks=[];save();render();};
-$("#enter").onclick=()=>toast("Entries open when the token launches.");
+$("#enter").onclick=()=>toast(picks.length<MAXPICKS?"Fill all five slots first. Entries open when $FSL launches.":"Saved. Entries open when $FSL launches, and this portfolio will be ready to enter.");
 $("#rest").innerHTML=REST.map((p,i)=>`<div><div class="pl">${i+4}th</div><div class="sh">${p}%</div></div>`).join("");
 
 // Stock token addresses live in assets.json and are loaded at runtime, so the page itself carries no contract addresses.
