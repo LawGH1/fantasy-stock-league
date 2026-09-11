@@ -4,323 +4,363 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fantasy Stock League</title>
-<meta name="description" content="Draft five stocks. Beat the chain. Split the pot. Weekly fantasy leagues on Robinhood Chain, scored by real on-chain prices.">
+<meta name="description" content="Draft five stocks. Beat the chain. Split the pot. A weekly fantasy league on Robinhood Chain, scored by real on-chain prices and paid out every Friday.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F4F1EA; --card:#FFFDF9; --ink:#14181F; --muted:#6B7078; --line:#E3DED3;
-    --green:#178F5B; --green-soft:#E3F3EB; --red:#C8412F; --red-soft:#F9E4E0;
-    --amber:#E8A33D; --amber-soft:#FBEFD9;
-    --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,Segoe UI,sans-serif;
+    --cream:#F5F1E8; --paper:#FFFDF8; --ink:#0F1419; --ink-2:#1B222B; --line:#E4DED2; --line-dark:#2A333D;
+    --muted:#6E7580; --muted-dark:#98A2AE;
+    --green:#1DB874; --green-deep:#128A56; --green-soft:#DDF5EA;
+    --red:#E0503B; --amber:#F2B544; --amber-soft:#FBEFD3;
+    --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,Segoe UI,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-  h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-0.01em;margin:0}
-  h1{font-size:clamp(44px,6.4vw,72px);line-height:1.04}
-  h2{font-size:clamp(34px,4.4vw,48px);line-height:1.12;margin-bottom:16px}
-  h3{font-size:23px;margin-bottom:8px}
-  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
-  @media(max-width:860px){.rules{grid-template-columns:1fr}}
-  .rule{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-  .rule h3{font-size:20px;margin-bottom:10px}
-  .rule ul{margin:0;padding-left:18px}
-  .rule li{margin:6px 0;color:#2b2f36}
-  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
-  @media(max-width:700px){.why{grid-template-columns:1fr}}
-  .why .w{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
-  .why .w b{display:block;font-size:16px;margin-bottom:4px}
-  .flow{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .flow .f{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);font-size:15px}
-  .flow .f:last-child{border-bottom:0}
-  .flow .f span:first-child{font-weight:600}
-  p{margin:0 0 14px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);font-weight:800;letter-spacing:-0.015em;margin:0}
+  h1{font-size:clamp(52px,7.6vw,96px);line-height:.98}
+  h2{font-size:clamp(40px,5.2vw,64px);line-height:1.02;margin-bottom:22px}
+  h3{font-size:24px;margin-bottom:10px;font-weight:600}
+  p{margin:0 0 16px}
   .muted{color:var(--muted)}
-  .small{font-size:13px}
-  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .lead{font-size:21px;line-height:1.5}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--green)}
+  .dark .eyebrow{color:var(--muted-dark)}
+  em{font-style:italic;color:var(--green)}
+  .mono{font-family:var(--mono)}
 
-  nav{position:sticky;top:0;z-index:10;background:rgba(244,241,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:700;font-size:19px;text-decoration:none}
-  .brand .dot{width:28px;height:28px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#fff;font-family:var(--sans);font-size:13px;font-weight:700}
-  .links{display:flex;gap:26px;font-size:14px;font-weight:500}
-  .links a{text-decoration:none;color:var(--muted)}
-  .links a:hover{color:var(--ink)}
+  /* ticker */
+  .ticker{background:var(--ink);color:#fff;border-bottom:1px solid var(--line-dark);overflow:hidden;height:40px;display:flex;align-items:center}
+  .ticker .track{display:flex;gap:40px;white-space:nowrap;animation:tick 70s linear infinite;font-family:var(--mono);font-size:13px;padding-left:100%}
+  .ticker .track span b{font-weight:600;margin-right:8px}
+  .ticker .up{color:var(--green)}.ticker .down{color:#FF7A66}
+  @keyframes tick{to{transform:translateX(-100%)}}
+
+  nav{background:var(--ink);color:#fff}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:800;font-size:21px;text-decoration:none}
+  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--green);color:var(--ink);display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:19px}
+  .links{display:flex;gap:30px;font-size:14px;font-weight:500}
+  .links a{text-decoration:none;color:var(--muted-dark)}
+  .links a:hover{color:#fff}
   @media(max-width:700px){.links{display:none}}
 
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--sans)}
-  .btn.primary{background:var(--ink);color:#fff}
-  .btn.primary:hover{background:#000}
-  .btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
-  .btn.ghost:hover{background:#fff}
-  .btn.green{background:var(--green);color:#fff}
-  .btn[disabled]{opacity:.45;cursor:not-allowed}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--sans);transition:transform .1s}
+  .btn:active{transform:translateY(1px)}
+  .btn.green{background:var(--green);color:var(--ink)}
+  .btn.green:hover{background:#24cc82}
+  .btn.outline-light{border-color:#3a444f;color:#fff;background:transparent}
+  .btn.outline-light:hover{background:#1b2229}
+  .btn.ink{background:var(--ink);color:#fff}
+  .btn.outline{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn.outline:hover{background:#fff}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
 
-  .hero{padding:104px 0 96px}
-  .hero .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center}
-  @media(max-width:860px){.hero .grid{grid-template-columns:1fr;gap:40px}}
-  .hero p.lead{font-size:20px;color:#2b2f36;max-width:540px;margin:22px 0 32px}
-  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  /* hero */
+  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:120px 0 130px}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+  .hero .big{position:absolute;right:-20px;top:-40px;font-family:var(--serif);font-weight:800;font-size:520px;line-height:1;color:#ffffff05;pointer-events:none;user-select:none}
+  .hero .grid{display:grid;grid-template-columns:1.25fr .9fr;gap:80px;align-items:center;position:relative}
+  @media(max-width:900px){.hero .grid{grid-template-columns:1fr;gap:56px}.hero .big{display:none}}
+  .hero .lead{color:#c9d0d8;max-width:560px;margin:30px 0 40px}
+  .actions{display:flex;gap:14px;flex-wrap:wrap}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
-  .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .stat{padding:20px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
-  .stat:nth-child(2n){border-right:0}
-  .stat:nth-last-child(-n+2){border-bottom:0}
-  .stat .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  .stat .v{font-family:var(--serif);font-size:30px;font-weight:700;margin-top:6px}
-  .pill{display:inline-block;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:600}
-  .pill.green{background:var(--green-soft);color:var(--green)}
-  .pill.amber{background:var(--amber-soft);color:#9a6412}
+  .board{background:var(--ink-2);border:1px solid var(--line-dark);border-radius:20px;padding:28px;box-shadow:0 30px 80px #00000055}
+  .board .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .board .top .t{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dark)}
+  .live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--amber)}
+  .live i{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .board .rows{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:14px;overflow:hidden}
+  .board .cell{background:var(--ink);padding:22px 22px}
+  .board .cell .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dark)}
+  .board .cell .v{font-family:var(--mono);font-size:34px;font-weight:600;margin-top:8px;color:#fff}
+  .board .foot{margin:18px 0 0;font-size:13px;color:var(--muted-dark)}
 
-  section{padding:96px 0;border-top:1px solid var(--line)}
-  .two{display:grid;grid-template-columns:1fr 1.7fr;gap:64px;align-items:start}
-  @media(max-width:860px){.two{grid-template-columns:1fr;gap:36px}}
-  .intro{max-width:640px;margin-bottom:40px}
+  /* bands */
+  section{padding:120px 0}
+  .light{background:var(--cream)}
+  .paper{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .dark{background:var(--ink);color:#fff}
+  .dark .muted{color:var(--muted-dark)}
+  .head{max-width:760px;margin-bottom:64px}
+
+  /* timeline */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+  .timeline::before{content:"";position:absolute;left:0;right:0;top:14px;height:2px;background:var(--line)}
+  .moment{padding:0 28px 0 0;position:relative}
+  .moment::before{content:"";width:30px;height:30px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:block;margin-bottom:22px;position:relative}
+  .moment.go::before{background:var(--green);border-color:var(--green)}
+  .moment .when{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .moment h3{margin:6px 0 10px}
+  @media(max-width:860px){.timeline{grid-template-columns:1fr;gap:34px}.timeline::before{display:none}}
 
   /* draft */
-  .draft-layout{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start}
-  @media(max-width:960px){.draft-layout{grid-template-columns:1fr}}
-  .budget{display:flex;gap:28px;align-items:flex-end;margin-bottom:18px;flex-wrap:wrap}
-  .budget .b{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 18px;min-width:130px}
-  .budget b{font-family:var(--serif);font-size:26px}
-  .budget .spacer{flex:1}
-  .assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-  .asset{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;user-select:none;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column;gap:12px}
-  .asset:hover{border-color:#bfb8a8}
+  .draft-grid{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start}
+  @media(max-width:980px){.draft-grid{grid-template-columns:1fr}}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+  .chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:16px}
+  .asset{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;user-select:none;transition:border-color .15s,box-shadow .15s,transform .1s;display:flex;flex-direction:column;gap:14px}
+  .asset:hover{border-color:#b9b2a3;transform:translateY(-1px)}
   .asset.on{border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
-  .asset.off{opacity:.38;cursor:not-allowed}
-  .asset .head{display:flex;align-items:center;gap:11px}
-  .logo{width:40px;height:40px;border-radius:50%;flex:none;background:#f3f0e9;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;font-weight:700;font-size:13px;color:var(--muted)}
+  .asset.off{opacity:.35;cursor:not-allowed}
+  .asset .h{display:flex;align-items:center;gap:12px}
+  .logo{width:42px;height:42px;border-radius:50%;flex:none;background:#f1ede4;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;font-weight:700;font-size:13px;color:var(--muted)}
   .logo img{width:100%;height:100%;object-fit:cover;display:block}
-  .asset .t{font-weight:600;font-size:15px;line-height:1.2}
-  .asset .n{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px}
-  .asset .p{font-size:13px;display:flex;justify-content:space-between;align-items:center}
-  .cost{font-size:11px;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--muted);margin-left:auto}
-  .up{color:var(--green);font-weight:600}.down{color:var(--red);font-weight:600}
-  .team{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;position:sticky;top:88px}
-  .team .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;gap:10px}
-  .team .row .logo{width:28px;height:28px;font-size:10px}
-  .team .row:last-of-type{border-bottom:0}
-  .team .row .l{display:flex;align-items:center;gap:10px}
-  .team .score{margin-top:14px;padding-top:16px;border-top:1px solid var(--line)}
-  .team .score .v{font-family:var(--serif);font-size:34px;font-weight:700;margin:2px 0 14px}
-  .toast{font-size:13px;color:var(--muted);margin-top:10px;min-height:18px}
+  .asset .t{font-weight:700;font-size:16px;line-height:1.15}
+  .asset .n{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:104px}
+  .cost{font-family:var(--mono);font-size:11px;font-weight:600;background:var(--cream);border:1px solid var(--line);border-radius:7px;padding:3px 7px;color:var(--muted);margin-left:auto}
+  .asset .p{font-family:var(--mono);font-size:13px;display:flex;justify-content:space-between}
+  .up{color:var(--green-deep);font-weight:600}.down{color:var(--red);font-weight:600}
 
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:860px){.steps{grid-template-columns:1fr}}
-  .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px}
-  .step .num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;margin-bottom:16px}
+  .lineup{background:var(--ink);color:#fff;border-radius:22px;padding:28px;position:sticky;top:24px;box-shadow:0 30px 70px #0000002a}
+  .lineup .t{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dark);display:flex;justify-content:space-between;margin-bottom:18px}
+  .slot{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line-dark);min-height:58px}
+  .slot:last-of-type{border-bottom:0}
+  .slot .num{font-family:var(--serif);font-weight:800;font-size:20px;color:#3a444f;width:22px}
+  .slot.filled .num{color:var(--green)}
+  .slot .logo{width:32px;height:32px;font-size:10px;border-color:var(--line-dark);background:#fff}
+  .slot .empty{color:#3f4a56;font-size:14px}
+  .slot .who{flex:1;font-size:15px}
+  .slot .who span{color:var(--muted-dark);font-size:12px;display:block}
+  .slot .ch{font-family:var(--mono);font-size:13px}
+  .lineup .meta{display:flex;justify-content:space-between;margin:20px 0 6px;font-family:var(--mono);font-size:12px;color:var(--muted-dark)}
+  .lineup .meta b{color:#fff;font-size:16px}
+  .lineup .score{margin-top:16px;padding-top:18px;border-top:1px solid var(--line-dark)}
+  .lineup .score .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dark)}
+  .lineup .score .v{font-family:var(--mono);font-size:44px;font-weight:600;margin:4px 0 16px}
+  .lineup .score .v.up{color:var(--green)}.lineup .score .v.down{color:#FF7A66}
+  .lineup .btn{width:100%}
+  .lineup .clear{background:none;border:0;color:var(--muted-dark);font-size:13px;cursor:pointer;margin-top:12px;font-family:var(--sans);text-decoration:underline}
+  .toast{font-size:13px;color:var(--amber);margin-top:10px;min-height:18px}
 
-  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
-  th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line)}
-  th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:#faf8f3}
-  tr:last-child td{border-bottom:0}
-  td.r,th.r{text-align:right}
-  .bar{height:8px;background:var(--green-soft);border-radius:99px;overflow:hidden}
-  .bar i{display:block;height:100%;background:var(--green)}
+  /* rulebook */
+  .rulebook{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 72px}
+  @media(max-width:860px){.rulebook{grid-template-columns:1fr;gap:40px}}
+  .rule{display:grid;grid-template-columns:64px 1fr;gap:20px}
+  .rule .n{font-family:var(--serif);font-weight:800;font-size:56px;line-height:.9;color:var(--green)}
+  .rule h3{margin-bottom:8px}
+  .rule p{color:#c9d0d8;font-size:16px}
+  .rule p:last-child{margin:0}
 
-  ul.clean{list-style:none;padding:0;margin:0}
-  ul.clean li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;font-size:15px}
-  ul.clean li:last-child{border-bottom:0}
-  .led{width:10px;height:10px;border-radius:50%;margin-top:8px;flex:none}
-  .led.g{background:var(--green)}.led.a{background:var(--amber)}.led.x{background:#c9c4b8}
+  /* podium */
+  .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:end;margin-bottom:22px}
+  .pod{background:#fff;border:1px solid var(--line);border-radius:18px 18px 8px 8px;padding:22px;text-align:center}
+  .pod .place{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .pod .share{font-family:var(--serif);font-weight:800;font-size:56px;line-height:1.05;margin:6px 0 2px}
+  .pod.first{background:var(--ink);color:#fff;border-color:var(--ink);padding-top:46px}
+  .pod.first .share{color:var(--amber)}
+  .pod.first .place{color:var(--muted-dark)}
+  .pod.second{padding-top:36px}
+  .pod.third{padding-top:28px}
+  .rest{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+  @media(max-width:860px){.rest{grid-template-columns:repeat(4,1fr)}}
+  .rest div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center}
+  .rest .pl{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .rest .sh{font-family:var(--serif);font-weight:800;font-size:24px}
+  .prize-split{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
+  @media(max-width:900px){.prize-split{grid-template-columns:1fr;gap:40px}}
 
-  .ca{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
-  .ca button{flex:none}
+  /* token */
+  .token-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  @media(max-width:900px){.token-grid{grid-template-columns:1fr;gap:48px}}
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+  @media(max-width:640px){.why{grid-template-columns:1fr}}
+  .why .w{background:var(--ink-2);border:1px solid var(--line-dark);border-radius:16px;padding:22px 24px}
+  .why .w b{display:block;font-size:17px;margin-bottom:6px;color:#fff}
+  .why .w span{color:#c9d0d8;font-size:15px}
+  .ca{display:flex;gap:12px;align-items:center;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:14px;padding:16px 18px;font-family:var(--mono);font-size:13px;word-break:break-all;color:#c9d0d8}
+  .flow{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+  .flow .f{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:16px 20px;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:14px}
+  .flow .f .pc{font-family:var(--serif);font-weight:800;font-size:34px;color:var(--green)}
+  .flow .f p{margin:0;color:#c9d0d8;font-size:15px}
+  .flow .f p b{color:#fff}
+  .status{list-style:none;padding:0;margin:0}
+  .status li{padding:15px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:flex-start;font-size:16px}
+  .status li:last-child{border-bottom:0}
+  .led{width:11px;height:11px;border-radius:50%;margin-top:9px;flex:none}
+  .led.g{background:var(--green)}.led.a{background:var(--amber)}.led.x{background:#cfc9bc}
 
-  footer{padding:44px 0 56px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer{background:var(--ink);color:var(--muted-dark);padding:60px 0 70px;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer .brand{color:#fff;font-size:18px}
 </style>
 </head>
 <body>
 
+<div class="ticker"><div class="track" id="ticker"></div></div>
+
 <nav>
   <div class="wrap">
-    <a class="brand" href="#"><span class="dot">F</span>Fantasy Stock League</a>
+    <a class="brand" href="#"><span class="mark">F</span>Fantasy Stock League</a>
     <div class="links">
+      <a href="#week">The week</a>
       <a href="#draft">Draft</a>
-      <a href="#how">How it works</a>
+      <a href="#rules">Rulebook</a>
       <a href="#prizes">Prizes</a>
-      <a href="#token">Token</a>
+      <a href="#token">$FSL</a>
       <a href="https://x.com/" target="_blank" rel="noopener">X ↗</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero dark">
+  <div class="big">01</div>
   <div class="wrap grid">
     <div>
-      <div class="eyebrow">Weekly fantasy leagues on Robinhood Chain</div>
-      <h1>Draft five stocks.<br>Beat the chain.<br>Split the pot.</h1>
-      <p class="lead">Pick a team of tokenized stocks under a budget. Their real price moves over the week are your score. Top ten teams split the pot every Friday.</p>
+      <div class="eyebrow">Season one · Robinhood Chain</div>
+      <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br>Split the pot.</h1>
+      <p class="lead">Fantasy football, except your lineup is Nvidia, gold and GameStop, the scoreboard is the on-chain price, and Friday pays out to the top ten.</p>
       <div class="actions">
-        <a class="btn primary" href="#draft">Build your team</a>
-        <a class="btn ghost" href="#how">How it works</a>
+        <a class="btn green" href="#draft">Build your lineup</a>
+        <a class="btn outline-light" href="#week">See how a week works</a>
       </div>
     </div>
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-        <div class="eyebrow" style="margin:0">Event 1</div>
-        <span class="pill amber">Opens at launch</span>
+    <div class="board">
+      <div class="top"><span class="t">Week 1 scoreboard</span><span class="live"><i></i>Opens at launch</span></div>
+      <div class="rows">
+        <div class="cell"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
+        <div class="cell"><div class="k">Lineups in</div><div class="v" id="s-teams">—</div></div>
+        <div class="cell"><div class="k">Kickoff</div><div class="v">Mon 9:30</div></div>
+        <div class="cell"><div class="k">Final whistle</div><div class="v">Fri 4:00</div></div>
       </div>
-      <div class="stat-grid">
-        <div class="stat"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
-        <div class="stat"><div class="k">Teams entered</div><div class="v" id="s-teams">—</div></div>
-        <div class="stat"><div class="k">Closes</div><div class="v" id="s-closes">Fri 4pm ET</div></div>
-        <div class="stat"><div class="k">Prizes paid</div><div class="v" id="s-paid">—</div></div>
-      </div>
-      <p class="small muted" style="margin:14px 0 0">Scores use on-chain pool prices from Robinhood Chain. Every payout is a public transaction.</p>
+      <p class="foot">Eastern time. Scores come from Robinhood Chain pool prices. Every payout is a public transaction.</p>
     </div>
   </div>
 </header>
 
-<section id="draft">
+<section id="week" class="paper">
   <div class="wrap">
-    <div class="intro">
-      <div class="eyebrow">Try it now</div>
-      <h2>Build a team</h2>
-      <p class="muted" style="font-size:17px">Five picks, twelve points of budget. Big names cost more. The score is what your team would have done over the last 24 hours, using live prices from the chain. Your team saves in this browser, so when Event 1 opens you can enter it as is.</p>
+    <div class="head">
+      <div class="eyebrow">How a week plays out</div>
+      <h2>Four moments. Same time every week.</h2>
+      <p class="lead muted">No apps to install, no accounts to make. A lineup, a week of market moves, and a payout.</p>
     </div>
-    <div class="draft-layout">
+    <div class="timeline">
+      <div class="moment"><div class="when">Sunday · 11:59pm</div><h3>Lineups lock</h3><p class="muted">Entries close before the market opens. Send FSL to the league wallet with your lineup and you're in. After this, no changes.</p></div>
+      <div class="moment go"><div class="when">Monday · 9:30am</div><h3>Kickoff</h3><p class="muted">The opening pool price of every stock in your lineup is recorded. That's your starting line.</p></div>
+      <div class="moment"><div class="when">Mon to Fri</div><h3>Live scoring</h3><p class="muted">Each pick scores its percent move from kickoff. Your lineup's score is the average of five. The leaderboard refreshes every 15 minutes.</p></div>
+      <div class="moment go"><div class="when">Friday · 4:00pm</div><h3>Final whistle, then payday</h3><p class="muted">Closing prices lock the table. The top ten split the pot, and the transactions go out from the league wallet that evening.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="draft" class="light">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Try the draft</div>
+      <h2>Twelve points. Five slots. Choose wisely.</h2>
+      <p class="lead muted">The big names cost four points, the quiet ones cost one. The score you see is what this lineup did in the last 24 hours, using live prices from the chain. It saves in your browser, so when Week 1 opens you can enter it as is.</p>
+    </div>
+    <div class="draft-grid">
       <div>
-        <div class="budget">
-          <div class="b"><span class="muted small">Budget left</span><br><b id="b-left">12</b><span class="muted"> / 12</span></div>
-          <div class="b"><span class="muted small">Picks</span><br><b id="b-picks">0</b><span class="muted"> / 5</span></div>
-          <div class="spacer"></div>
-          <button class="btn ghost" id="clear">Clear team</button>
-        </div>
+        <div class="filters" id="filters"></div>
         <div class="assets" id="assets"></div>
       </div>
-      <div class="team">
-        <div class="eyebrow" style="margin-bottom:8px">Your team</div>
-        <div id="team-rows"><div class="muted small">No picks yet. Tap a stock to add it.</div></div>
+      <aside class="lineup">
+        <div class="t"><span>Your lineup</span><span id="l-count">0 / 5</span></div>
+        <div id="slots"></div>
+        <div class="meta"><span>Budget left <b id="b-left">12</b> / 12</span><span>Cost <b id="b-spent">0</b></span></div>
         <div class="score">
-          <div class="muted small">Team score, last 24h</div>
+          <div class="k">Lineup score, last 24h</div>
           <div class="v" id="t-score">—</div>
-          <button class="btn green" id="enter" disabled style="width:100%;justify-content:center">Enter Event 1</button>
+          <button class="btn green" id="enter" disabled>Enter Week 1</button>
+          <button class="clear" id="clear">Clear lineup</button>
         </div>
         <div class="toast" id="toast"></div>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
 
-<section id="how">
+<section id="rules" class="dark">
   <div class="wrap">
-    <div class="intro">
-      <div class="eyebrow">How it works</div>
-      <h2>Three steps, one week</h2>
+    <div class="head">
+      <div class="eyebrow">The rulebook</div>
+      <h2>Short enough to read. Strict enough to trust.</h2>
     </div>
-    <div class="steps">
-      <div class="step"><div class="num">1</div><h3>Draft</h3><p class="muted" style="font-size:16px">Pick five tokenized stocks from the Robinhood Chain registry. You have twelve budget points. Hot names like Nvidia and SpaceX cost four, steady ones like gold and the S&amp;P cost one. Entries close Sunday night before the market opens.</p></div>
-      <div class="step"><div class="num">2</div><h3>Score</h3><p class="muted" style="font-size:16px">Monday open to Friday close. Each pick scores its percent move, measured from the stock token's on-chain pool price. Your team score is the average of your five picks. The leaderboard updates every 15 minutes.</p></div>
-      <div class="step"><div class="num">3</div><h3>Get paid</h3><p class="muted" style="font-size:16px">Friday after the close, the top ten teams split the pot on a fixed table. Payouts go out from the league wallet as public transactions you can check on the explorer the same evening.</p></div>
+    <div class="rulebook">
+      <div class="rule"><div class="n">1</div><div><h3>Five picks, twelve points</h3><p>Every stock has a fixed cost from one to four points, set for the whole season. You cannot go over budget and you cannot enter with fewer than five.</p></div></div>
+      <div class="rule"><div class="n">2</div><div><h3>Prices come from the chain</h3><p>Each stock's score uses its deepest Uniswap pool on Robinhood Chain, read from public trackers. No judges, no oracles you have to trust, and no price we can quietly change.</p></div></div>
+      <div class="rule"><div class="n">3</div><div><h3>Kickoff to final whistle</h3><p>Start is the pool price at 9:30am ET Monday. End is 4:00pm ET Friday. Score per pick is the percent change. Lineup score is the plain average of five.</p></div></div>
+      <div class="rule"><div class="n">4</div><div><h3>Enter as many lineups as you like</h3><p>Each lineup is its own entry and its own shot at the top ten. Hold the holder threshold of FSL and one lineup a week is free.</p></div></div>
+      <div class="rule"><div class="n">5</div><div><h3>Locked means locked</h3><p>Once Sunday closes, no swaps and no late entries. Ties go to the lineup that entered first.</p></div></div>
+      <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The league wallet is public all week, so the pot is visible. The scoring code is public, so anyone can rerun the week and get the same table. Payouts are links, not promises.</p></div></div>
     </div>
-
-    <div class="rules">
-      <div class="rule">
-        <h3>Drafting</h3>
-        <ul>
-          <li>Five picks, no more, no fewer. Twelve points of budget.</li>
-          <li>Each stock has a fixed cost from one to four points. Costs are set for the season, not per event.</li>
-          <li>You can enter more than one team. Each team is its own entry.</li>
-          <li>Once entries close your team is locked for the week. No trades mid-event.</li>
-        </ul>
-      </div>
-      <div class="rule">
-        <h3>Scoring</h3>
-        <ul>
-          <li>Start price is the pool price at 9:30am ET Monday. End price is 4:00pm ET Friday.</li>
-          <li>Score per pick is the percent change between the two. Team score is the plain average of five.</li>
-          <li>Prices come from the deepest Uniswap pool for each stock token on Robinhood Chain, read from public trackers.</li>
-          <li>Ties are broken by the team entered first.</li>
-        </ul>
-      </div>
-      <div class="rule">
-        <h3>Entering</h3>
-        <ul>
-          <li>An entry is a transfer of FSL to the league wallet. Send it, your team is in.</li>
-          <li>Hold the holder threshold of FSL and one entry per week is free.</li>
-          <li>The entry price and threshold are posted before each event opens and do not change once it does.</li>
-          <li>Not available to US persons, in line with the stock tokens the league is scored on.</li>
-        </ul>
-      </div>
-      <div class="rule">
-        <h3>Payouts and proof</h3>
-        <ul>
-          <li>The pot is every entry for the week plus anything the league seeds. Top ten split it on the table below.</li>
-          <li>Payouts leave the league wallet within hours of the Friday close. Every one is a transaction link.</li>
-          <li>The scoring code is public. Anyone can rerun the week and get the same leaderboard.</li>
-          <li>The league wallet address is published before the first event, so the pot is visible all week.</li>
-        </ul>
-      </div>
-    </div>
+    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens the league is scored on. Entry price and holder threshold are posted before each week opens and don't change once it has.</p>
   </div>
 </section>
 
-<section id="prizes">
-  <div class="wrap two">
+<section id="prizes" class="light">
+  <div class="wrap prize-split">
     <div>
       <div class="eyebrow">Prizes</div>
-      <h2>Top ten split the pot</h2>
-      <p class="muted" style="font-size:17px">The pot is every entry for the week, plus whatever the league seeds. The split is fixed, so you know what a finish is worth before you enter.</p>
-      <p class="muted">A slice of each pot buys back FSL. Amounts and links are posted after every event.</p>
+      <h2>Top ten split the pot.</h2>
+      <p class="lead muted">The pot is every entry for the week plus whatever the league seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent week gets something back, not just a perfect one.</p>
+      <p class="muted">A slice of every pot buys back FSL on the open market. Amounts and transaction links are posted after each week.</p>
     </div>
     <div>
-      <table>
-        <thead><tr><th>Finish</th><th>Share of pot</th><th class="r"></th></tr></thead>
-        <tbody id="prize-rows"></tbody>
-      </table>
+      <div class="podium">
+        <div class="pod second"><div class="place">2nd</div><div class="share">18%</div></div>
+        <div class="pod first"><div class="place">1st</div><div class="share">30%</div></div>
+        <div class="pod third"><div class="place">3rd</div><div class="share">12%</div></div>
+      </div>
+      <div class="rest" id="rest"></div>
     </div>
   </div>
 </section>
 
-<section id="token">
-  <div class="wrap two">
+<section id="token" class="dark">
+  <div class="wrap token-grid">
     <div>
-      <div class="eyebrow">Token</div>
-      <h2>$FSL</h2>
-      <p class="muted" style="font-size:17px">FSL is the league's currency. It launches on Pons on Robinhood Chain, with a locked liquidity pool and no team allocation beyond a small published reserve used to seed the first pots.</p>
-      <div class="ca" style="margin-top:18px"><span id="ca-text">Contract address posted here at launch</span><button class="btn ghost" id="copy" style="padding:8px 12px;font-size:13px" disabled>Copy</button></div>
-
-      <div class="eyebrow" style="margin-top:34px">Why hold it</div>
+      <div class="eyebrow">The token</div>
+      <h2>$FSL is the league's chips.</h2>
+      <p class="lead muted">You buy in with it, you get paid in it, and the pot buys it back every Friday. It launches on Pons on Robinhood Chain with a permanently locked liquidity pool and a small published reserve that seeds the first pots.</p>
+      <div class="ca" style="margin-top:26px"><span id="ca-text">Contract address posted here at launch</span></div>
       <div class="why">
-        <div class="w"><b>It is the entry ticket.</b>Every team in every event is paid for in FSL. More players means more FSL bought to enter.</div>
-        <div class="w"><b>Holders play free.</b>Hold the threshold and one entry per week costs nothing. That is a standing reason to keep a bag rather than sell it.</div>
-        <div class="w"><b>The pot buys it back.</b>A fixed slice of every weekly pot buys FSL on the open market. Bigger events, bigger buybacks, every Friday, posted with links.</div>
-        <div class="w"><b>Payouts are in FSL.</b>Winners are paid in the token, so a good week puts more of it in the hands of the people most likely to play again.</div>
-      </div>
-
-      <div class="eyebrow" style="margin-top:34px">Where each entry goes</div>
-      <div class="flow">
-        <div class="f"><span>Prize pot</span><span>Most of every entry. Split among the top ten on Friday.</span></div>
-        <div class="f"><span>Buyback</span><span>A fixed slice buys FSL from the pool. Bought tokens seed future pots or are burned, and the choice is posted each week.</span></div>
-        <div class="f"><span>League</span><span>A small slice keeps the scoring engine and the site running. Exact splits are published before Event 1 and do not change without notice.</span></div>
+        <div class="w"><b>It's the entry ticket.</b><span>Every lineup in every week is paid for in FSL. More players, more FSL bought to play.</span></div>
+        <div class="w"><b>Holders play free.</b><span>Hold the threshold and one lineup a week costs nothing. A reason to keep a bag, not flip it.</span></div>
+        <div class="w"><b>The pot buys it back.</b><span>A fixed slice of every pot buys FSL from the pool on Friday, posted with links.</span></div>
+        <div class="w"><b>Winners are paid in it.</b><span>A good week puts more FSL in the hands of the people most likely to play again.</span></div>
       </div>
     </div>
     <div>
-      <div class="eyebrow">Where it stands</div>
-      <ul class="clean">
-        <li><span class="led g"></span><div><b>Draft engine.</b> Live prices, budget, five-pick teams. Running on this page.</div></li>
-        <li><span class="led g"></span><div><b>Scoring.</b> Percent moves from on-chain pool prices, recomputable by anyone. Code is public.</div></li>
-        <li><span class="led a"></span><div><b>Entries.</b> An entry is a transfer of FSL to the league wallet. Opens with the token.</div></li>
-        <li><span class="led a"></span><div><b>Payouts.</b> Sent from the league wallet after each event, posted with transaction links.</div></li>
-        <li><span class="led x"></span><div><b>Draft the traders.</b> Adding the chain's top wallets as picks, scored by their PnL. After the first events run.</div></li>
-      </ul>
-      <p class="small muted" style="margin-top:16px">Not available to US persons, in line with the stock tokens the league is scored on. Nothing here is financial advice.</p>
+      <div class="eyebrow">Where each entry goes</div>
+      <div class="flow" style="margin-top:0">
+        <div class="f"><div class="pc">85%</div><p><b>Prize pot.</b> Split among the top ten lineups on Friday.</p></div>
+        <div class="f"><div class="pc">10%</div><p><b>Buyback.</b> Buys FSL from the pool. Bought tokens seed future pots or are burned, and which one is posted each week.</p></div>
+        <div class="f"><div class="pc">5%</div><p><b>League.</b> Keeps the scoring engine and this site running.</p></div>
+      </div>
+      <p class="muted" style="margin-top:18px;font-size:14px">Proposed split for Season one. Final numbers are published before Week 1 opens and don't change without notice.</p>
     </div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap" style="max-width:820px">
+    <div class="eyebrow">Where it stands</div>
+    <h2 style="font-size:clamp(30px,3.6vw,40px)">Built in the open.</h2>
+    <ul class="status" style="margin-top:28px">
+      <li><span class="led g"></span><div><b>Draft engine.</b> Live prices, budget, five-slot lineups. Running on this page now.</div></li>
+      <li><span class="led g"></span><div><b>Scoring.</b> Percent moves from on-chain pool prices, recomputable by anyone. Code goes public before Week 1.</div></li>
+      <li><span class="led a"></span><div><b>Entries.</b> A transfer of FSL to the league wallet. Opens with the token.</div></li>
+      <li><span class="led a"></span><div><b>Payouts.</b> Sent from the league wallet after each week, posted with transaction links.</div></li>
+      <li><span class="led x"></span><div><b>Draft the traders.</b> The chain's top wallets as picks, scored by their PnL. After the first weeks run.</div></li>
+    </ul>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div>Fantasy Stock League · $FSL · Robinhood Chain</div>
-    <div>Prices on this page load live from public trackers.</div>
+    <a class="brand" href="#"><span class="mark">F</span>Fantasy Stock League</a>
+    <div>$FSL · Robinhood Chain · Nothing here is financial advice.</div>
   </div>
 </footer>
 
@@ -357,43 +397,52 @@ const ASSETS = [
   ["SPY","S&P 500","0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",1],
   ["QQQ","Nasdaq 100","0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",1],
 ];
-const BUDGET=12, MAXPICKS=5;
-const PRIZES=[30,18,12,9,7,6,5,5,4,4];
-let prices={}, picks=[];
+const BUDGET=12, MAXPICKS=5, REST=[9,7,6,5,5,4,4];
+let prices={}, picks=[], filter=0;
 try{ picks=JSON.parse(localStorage.getItem("fsl-team")||"[]").filter(t=>ASSETS.some(a=>a[0]===t)); }catch(e){ picks=[]; }
 
 const $=s=>document.querySelector(s);
+const byT=t=>ASSETS.find(a=>a[0]===t);
+const priceOf=a=>prices[a[2].toLowerCase()];
 const fmt=n=>n==null?"—":(n>=1000?n.toLocaleString(undefined,{maximumFractionDigits:0}):n.toLocaleString(undefined,{maximumFractionDigits:2}));
 const pct=n=>n==null?"—":(n>0?"+":"")+n.toFixed(2)+"%";
 const logo=t=>{ const src=(window.LOGOS&&window.LOGOS[t])||`logos/${t}.png`; return `<span class="logo"><img src="${src}" alt="" onerror="this.parentNode.textContent='${t.slice(0,2)}'"></span>`; };
-
-function spent(){ return picks.reduce((s,t)=>s+ASSETS.find(a=>a[0]===t)[3],0); }
-function canPick(a){ return picks.length<MAXPICKS && spent()+a[3]<=BUDGET; }
+const spent=()=>picks.reduce((s,t)=>s+byT(t)[3],0);
+const canPick=a=>picks.length<MAXPICKS && spent()+a[3]<=BUDGET;
 
 function render(){
   const grid=$("#assets"); grid.innerHTML="";
   for(const a of ASSETS){
-    const on=picks.includes(a[0]); const p=prices[a[2].toLowerCase()];
+    if(filter && a[3]!==filter) continue;
+    const on=picks.includes(a[0]); const p=priceOf(a);
     const d=document.createElement("div");
     d.className="asset"+(on?" on":"")+(!on&&!canPick(a)?" off":"");
-    d.innerHTML=`<div class="head">${logo(a[0])}<div><div class="t">${a[0]}</div><div class="n">${a[1]}</div></div><span class="cost">${a[3]} pt</span></div>
+    d.innerHTML=`<div class="h">${logo(a[0])}<div><div class="t">${a[0]}</div><div class="n">${a[1]}</div></div><span class="cost">${a[3]} pt</span></div>
       <div class="p"><span class="muted">${p?"$"+fmt(p.price):"…"}</span><span class="${p&&p.ch>=0?"up":"down"}">${p?pct(p.ch):""}</span></div>`;
-    d.onclick=()=>{ if(on){picks=picks.filter(t=>t!==a[0]);} else if(canPick(a)){picks.push(a[0]);} else {toast(picks.length>=MAXPICKS?"Five picks is the limit.":"Not enough budget for that one.");return;} save(); render(); };
+    d.onclick=()=>{ if(on){picks=picks.filter(t=>t!==a[0]);} else if(canPick(a)){picks.push(a[0]);} else {toast(picks.length>=MAXPICKS?"All five slots are full.":"Not enough budget left for that one.");return;} save(); render(); };
     grid.appendChild(d);
   }
-  $("#b-left").textContent=BUDGET-spent(); $("#b-picks").textContent=picks.length;
-  const rows=$("#team-rows");
-  if(!picks.length){ rows.innerHTML='<div class="muted small">No picks yet. Tap a stock to add it.</div>'; }
-  else rows.innerHTML=picks.map(t=>{const a=ASSETS.find(x=>x[0]===t);const p=prices[a[2].toLowerCase()];return `<div class="row"><span class="l">${logo(a[0])}<span><b>${a[0]}</b> <span class="muted">${a[1]}</span></span></span><span class="${p&&p.ch>=0?"up":"down"}">${p?pct(p.ch):"…"}</span></div>`;}).join("");
-  const have=picks.map(t=>prices[ASSETS.find(x=>x[0]===t)[2].toLowerCase()]).filter(Boolean);
+  $("#slots").innerHTML=Array.from({length:MAXPICKS},(_,i)=>{
+    const t=picks[i]; if(!t) return `<div class="slot"><span class="num">${i+1}</span><span class="empty">Open slot</span></div>`;
+    const a=byT(t), p=priceOf(a);
+    return `<div class="slot filled"><span class="num">${i+1}</span>${logo(t)}<div class="who">${a[0]}<span>${a[1]} · ${a[3]} pt</span></div><span class="ch ${p&&p.ch>=0?"up":"down"}">${p?pct(p.ch):"…"}</span></div>`;
+  }).join("");
+  $("#l-count").textContent=`${picks.length} / 5`; $("#b-left").textContent=BUDGET-spent(); $("#b-spent").textContent=spent();
+  const have=picks.map(t=>priceOf(byT(t))).filter(Boolean);
   const s=have.length?have.reduce((x,p)=>x+p.ch,0)/have.length:null;
   const sc=$("#t-score"); sc.textContent=s==null?"—":pct(s); sc.className="v "+(s==null?"":(s>=0?"up":"down"));
-  $("#enter").disabled=true;
+  $("#filters").innerHTML=[[0,"All"],[4,"4 pt"],[3,"3 pt"],[2,"2 pt"],[1,"1 pt"]].map(([v,l])=>`<button class="chip${filter===v?" on":""}" data-v="${v}">${l}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{filter=+c.dataset.v;render();});
+}
+function renderTicker(){
+  const items=ASSETS.map(a=>{const p=priceOf(a); if(!p) return ""; return `<span><b>${a[0]}</b>$${fmt(p.price)} <span class="${p.ch>=0?"up":"down"}">${p.ch>=0?"▲":"▼"} ${Math.abs(p.ch).toFixed(2)}%</span></span>`;}).join("");
+  $("#ticker").innerHTML=items||"<span>Loading live prices from Robinhood Chain…</span>";
 }
 function save(){ try{localStorage.setItem("fsl-team",JSON.stringify(picks));}catch(e){} }
 function toast(m){ $("#toast").textContent=m; setTimeout(()=>{ if($("#toast").textContent===m) $("#toast").textContent=""; },2500); }
 $("#clear").onclick=()=>{picks=[];save();render();};
 $("#enter").onclick=()=>toast("Entries open when the token launches.");
+$("#rest").innerHTML=REST.map((p,i)=>`<div><div class="pl">${i+4}th</div><div class="sh">${p}%</div></div>`).join("");
 
 async function loadPrices(){
   const addrs=ASSETS.map(a=>a[2]); const want=addrs.map(x=>x.toLowerCase());
@@ -407,10 +456,9 @@ async function loadPrices(){
       }
     }catch(e){}
   }
-  render();
+  render(); renderTicker();
 }
-$("#prize-rows").innerHTML=PRIZES.map((p,i)=>`<tr><td>${i+1}${["st","nd","rd"][i]||"th"}</td><td>${p}%</td><td class="r" style="width:40%"><div class="bar"><i style="width:${p/PRIZES[0]*100}%"></i></div></td></tr>`).join("");
-render(); loadPrices(); setInterval(loadPrices,60000);
+render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
 </script>
 </body>
 </html>
