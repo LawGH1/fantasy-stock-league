@@ -243,6 +243,28 @@
   .ticker2 b{color:#fff;font-weight:600}
   .magnet{will-change:transform}
   .h2wrap{display:inline-block}
+
+  /* the wheel */
+  .wheelwrap{display:grid;grid-template-columns:460px 1fr;gap:56px;align-items:center;margin:0 0 72px;padding:40px 0}
+  @media(max-width:900px){.wheelwrap{grid-template-columns:1fr;justify-items:center;text-align:center}}
+  .wheelbox{position:relative;width:460px;height:460px}
+  @media(max-width:520px){.wheelbox{width:320px;height:320px}}
+  .wheel{position:absolute;inset:30px;border-radius:50%;border:1px dashed #cfc9bb}
+  .wheel::after{content:"";position:absolute;inset:60px;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle,#fff 0%,rgba(255,255,255,0) 72%)}
+  .wheel .b{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;border-radius:50%;background:#fff;border:2px solid var(--line);overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:border-color .2s,box-shadow .2s}
+  .wheel .b img{width:100%;height:100%;object-fit:cover;display:block}
+  .wheel .b.hot{border-color:var(--green);box-shadow:0 0 0 5px var(--green-soft),0 8px 20px rgba(0,0,0,.08);z-index:2}
+  .wheel .b.dim{opacity:.35}
+  .wheelbox .pointer{position:absolute;left:50%;top:6px;width:0;height:0;margin-left:-11px;border-left:11px solid transparent;border-right:11px solid transparent;border-top:18px solid var(--ink);z-index:3}
+  .wheelbox .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:180px;pointer-events:none}
+  .hub .big{font-family:var(--serif);font-weight:800;font-size:40px;line-height:1}
+  .hub .sub{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .hub .picks{display:flex;justify-content:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .hub .picks span{font-family:var(--mono);font-size:12px;font-weight:600;background:var(--ink);color:#fff;border-radius:6px;padding:3px 7px}
+  .wheel-cta h3{font-size:34px;font-family:var(--serif);font-weight:800;margin-bottom:12px}
+  .wheel-cta p{color:var(--muted);font-size:18px;max-width:440px}
+  .wheel-cta .btn{margin-top:8px}
+  .wheel-cta .fine{font-size:13px;color:var(--muted);margin-top:14px}
 </style>
 </head>
 <body>
@@ -324,6 +346,19 @@
       <div class="eyebrow">Try the draft</div>
       <h2>Twelve points. Five slots. Choose wisely.</h2>
       <p class="lead muted">The big names cost four points, the quiet ones cost one. The score you see is what this portfolio did in the last hour, using live prices from the chain. It saves in your browser, so when rounds open you can enter it as is.</p>
+    </div>
+    <div class="wheelwrap">
+      <div class="wheelbox">
+        <div class="pointer"></div>
+        <div class="wheel" id="wheel"></div>
+        <div class="hub"><div class="big" id="hub-big">29</div><div class="sub" id="hub-sub">stocks on the wheel</div><div class="picks" id="hub-picks"></div></div>
+      </div>
+      <div class="wheel-cta">
+        <h3>Can't decide? Spin.</h3>
+        <p>The wheel picks five stocks that fit the twelve-point budget and drops them straight into your portfolio. Spin again if you don't like the hand.</p>
+        <button class="btn ink magnet" id="spin">Spin the wheel</button>
+        <div class="fine">Random picks are never better than good ones. But they are faster.</div>
+      </div>
     </div>
     <div class="draft-grid">
       <div>
@@ -565,8 +600,8 @@ render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
     const io=new IntersectionObserver(entries=>{
       const hit=entries.filter(x=>x.isIntersecting).map(x=>x.target); if(!hit.length) return;
       hit.forEach(t=>io.unobserve(t));
-      animate(hit,Object.assign({opacity:[0,1],translateY:[28,0],duration:800,ease:"outExpo",delay:stagger(90)},opts||{}));
-    },{threshold:.15,rootMargin:"0px 0px -8% 0px"});
+      animate(hit,Object.assign({opacity:[0,1],translateY:[64,0],duration:1100,ease:"outExpo",delay:stagger(110)},opts||{}));
+    },{threshold:.12,rootMargin:"0px 0px -6% 0px"});
     els.forEach(e=>io.observe(e));
   };
   if(!reduce){
@@ -642,6 +677,34 @@ render(); renderTicker(); loadPrices(); setInterval(loadPrices,60000);
       el.textContent=final.split("").map((c,j)=>c===" "?" ":(j<fixed?c:CH[Math.floor(Math.random()*CH.length)])).join("");
       if(p<1) requestAnimationFrame(step); else el.textContent=final; })(t0); };
   if(!reduce){ const io2=new IntersectionObserver(es=>es.forEach(x=>{ if(x.isIntersecting){io2.unobserve(x.target);scramble(x.target);} }),{threshold:.6}); document.querySelectorAll("section h2").forEach(h=>io2.observe(h)); }
+
+  /* the wheel: 29 stocks orbiting; spin builds a random legal portfolio */
+  const wheel=document.querySelector("#wheel");
+  if(wheel){
+    const N=ASSETS.length, st={rot:-90}; let spinning=false, idle=!reduce;
+    wheel.innerHTML=ASSETS.map(a=>`<div class="b" data-t="${a[0]}"><img src="${(window.LOGOS&&window.LOGOS[a[0]])||('logos/'+a[0]+'.png')}" alt="${a[0]}"></div>`).join("");
+    const badges=[...wheel.children];
+    const layout=()=>{ const R=wheel.offsetWidth/2-4; badges.forEach((b,i)=>{ const ang=(st.rot+i*360/N)*Math.PI/180; b.style.transform=`translate(${(Math.cos(ang)*R).toFixed(1)}px,${(Math.sin(ang)*R).toFixed(1)}px)`; }); };
+    layout(); addEventListener("resize",layout);
+    (function idleSpin(){ if(idle&&!spinning){ st.rot+=0.05; layout(); } requestAnimationFrame(idleSpin); })();
+    const hubBig=document.querySelector("#hub-big"), hubSub=document.querySelector("#hub-sub"), hubPicks=document.querySelector("#hub-picks");
+    const randomPortfolio=()=>{ for(let k=0;k<500;k++){ const pool=[...ASSETS].sort(()=>Math.random()-.5).slice(0,MAXPICKS); const cost=pool.reduce((s,a)=>s+a[3],0); if(cost<=BUDGET&&cost>=BUDGET-2) return pool; } return ASSETS.filter(a=>a[3]===2).slice(0,5); };
+    document.querySelector("#spin").onclick=()=>{
+      if(spinning) return; spinning=true;
+      badges.forEach(b=>b.classList.remove("hot","dim")); hubPicks.innerHTML=""; hubBig.textContent="…"; hubSub.textContent="spinning";
+      const chosen=randomPortfolio(); const target=st.rot+1440+Math.random()*360;
+      animate(st,{rot:target,duration:3400,ease:"outCubic",onUpdate:layout,onComplete:()=>{
+        picks=chosen.map(a=>a[0]); save(); render();
+        badges.forEach(b=>b.classList.add(picks.includes(b.dataset.t)?"hot":"dim"));
+        const cost=chosen.reduce((s,a)=>s+a[3],0);
+        hubBig.textContent=cost+"/12"; hubSub.textContent="points used";
+        hubPicks.innerHTML=chosen.map(a=>`<span>${a[0]}</span>`).join("");
+        animate("#hub-picks span",{opacity:[0,1],translateY:[8,0],delay:stagger(70),duration:400,ease:"outExpo"});
+        animate(badges.filter(b=>b.classList.contains("hot")),{scale:[1,1.25,1],delay:stagger(90),duration:600,ease:"outBack"});
+        setTimeout(()=>{ badges.forEach(b=>b.classList.remove("dim")); spinning=false; },900);
+      }});
+    };
+  }
 
   /* second ticker lane: names and costs, reversed direction */
   document.querySelector("#ticker2").innerHTML=ASSETS.map(a=>`<span><b>${a[0]}</b> ${a[1]} · ${a[3]} pt</span>`).join("");
