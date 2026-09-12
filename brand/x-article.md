@@ -65,7 +65,7 @@ Not available to US persons, in line with the stock tokens Hourly is scored on. 
 ### Start
 
 Build a portfolio now, no wallet needed: [domain]
-Follow @FSLonChain for the contract address and the first round time.
+Follow the account for the contract address and the first round time.
 
 ---
 

@@ -1,7 +1,7 @@
 # X profile for Hourly
 
 ## Handle
-@FSLonChain  (live: https://x.com/FSLonChain)
+[new handle pending]
 
 ## Display name
 Hourly

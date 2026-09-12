@@ -24,7 +24,7 @@ const teaser = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900
   <text x="100" y="430" font-family="Fraunces" font-weight="600" font-style="italic" font-size="64" fill="#1DB874">the stock draft that pays every hour</text>
   <text x="100" y="530" font-family="Inter" font-weight="500" font-size="36" fill="#C9D0D8">Draft five stocks. Beat the chain. <tspan fill="#1DB874">Paid every hour.</tspan></text>
   <text x="100" y="600" font-family="Inter" font-weight="500" font-size="26" fill="#7A8592">A new round every hour, 24/7. Top ten split the pot. Scored by on-chain prices.</text>
-  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY  ·  @FSLonChain</text>
+  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY</text>
 </svg>`;
 
 // 1600x900 three-step card
@@ -46,7 +46,7 @@ const howto = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900"
   ${badge("NVDA", 160, 660, 30)}${badge("TSLA", 232, 660, 30)}${badge("GME", 304, 660, 30)}${badge("AAPL", 376, 660, 30)}${badge("COIN", 448, 660, 30)}
   <text x="640" y="672" font-family="IBM Plex Mono" font-weight="600" font-size="22" fill="#F2B544">NEXT ROUND 00:34:12</text>
   <text x="1096" y="672" font-family="IBM Plex Mono" font-weight="600" font-size="22" fill="#1DB874">+2.53%  →  1st place</text>
-  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
+  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY  ·  ROBINHOOD CHAIN</text>
 </svg>`;
 
 function render(svg, out, width) {
