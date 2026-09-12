@@ -38,6 +38,6 @@ Where every entry goes.
 8/  (image: thread-8.png)
 Live now, no wallet needed.
 
-fantasystockleague.app
+playhourly.app
 
 CA and first round time will be posted here.

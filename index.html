@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <meta property="og:title" content="Hourly">
 <meta property="og:description" content="Draft five stocks. Beat the chain. Paid every hour. A new round every hour on Robinhood Chain.">
-<meta property="og:image" content="https://fantasystockleague.app/og.png">
+<meta property="og:image" content="https://playhourly.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -310,10 +310,10 @@
     <div class="board" data-pre>
       <div class="top"><span class="t">Round scoreboard</span><span class="live"><i></i>Opens at launch</span></div>
       <div class="rows">
-        <div class="cell"><div class="k">Pot</div><div class="v" id="s-pot">—</div></div>
-        <div class="cell"><div class="k">Portfolios in</div><div class="v" id="s-teams">—</div></div>
+        <div class="cell"><div class="k">Round 1 pot, seeded</div><div class="v" id="s-pot">100k</div></div>
+        <div class="cell"><div class="k">Portfolios in</div><div class="v" id="s-teams">0</div></div>
         <div class="cell next"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" id="ring-fg" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"/></svg></div><div><div class="k">Next open</div><div class="v" id="s-next">--:--</div></div></div>
-        <div class="cell"><div class="k">Rounds paid</div><div class="v" id="s-paid">—</div></div>
+        <div class="cell"><div class="k">Rounds paid</div><div class="v" id="s-paid">0</div></div>
       </div>
       <p class="foot">Rounds run 24/7 because the pools never close. Scores come from Robinhood Chain pool prices. Every payout is a public transaction.</p>
     </div>
@@ -398,7 +398,7 @@
       <div class="rule"><div class="n">5</div><div><h3>Locked means locked</h3><p>Once a round opens, no swaps. Enter after :00 and you're in the next round, not this one. Ties go to the portfolio that entered first.</p></div></div>
       <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The prize wallet is public, so the pot is visible all round. The scoring code is public, so anyone can rerun a round and get the same table. Payouts are automatic and every one is a transaction link, not a promise.</p></div></div>
     </div>
-    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens Hourly is scored on. Entry price and holder threshold are posted before rounds open and don't change mid-round.</p>
+    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens Hourly is scored on. Entry price and holder threshold are fixed for Season one and don't change mid-round.</p>
   </div>
 </section>
 
@@ -446,7 +446,15 @@
         <div class="f"><div class="pc">10%</div><p><b>Buyback.</b> Buys HOURLY from the pool. Bought tokens seed future pots or are burned, and which one is posted daily.</p></div>
         <div class="f"><div class="pc">5%</div><p><b>Hourly.</b> Keeps the scoring engine and this site running.</p></div>
       </div>
-      <p class="muted" style="margin-top:18px;font-size:14px">Proposed split for Season one. Final numbers are published before the first round opens and don't change without notice.</p>
+      <div class="eyebrow" style="margin-top:34px">Season one numbers</div>
+      <div class="flow" style="margin-top:0">
+        <div class="f"><div class="pc" style="font-size:26px">1B</div><p><b>Total supply.</b> 1,000,000,000 $HOURLY, all on Pons at launch. Liquidity locked forever.</p></div>
+        <div class="f"><div class="pc" style="font-size:26px">3%</div><p><b>Reserve.</b> 30,000,000 bought in the launch transaction, locked on chain for three months, used only to seed pots.</p></div>
+        <div class="f"><div class="pc" style="font-size:26px">100k</div><p><b>Seed per round.</b> 100,000 $HOURLY added to each of the first 24 pots, so round one pays before anyone has entered.</p></div>
+        <div class="f"><div class="pc" style="font-size:26px">2,500</div><p><b>Entry.</b> 2,500 $HOURLY per portfolio. Enter as many as you like.</p></div>
+        <div class="f"><div class="pc" style="font-size:26px">250k</div><p><b>Holder threshold.</b> Hold 250,000 $HOURLY and one portfolio an hour is free.</p></div>
+      </div>
+      <p class="muted" style="margin-top:18px;font-size:14px">Fixed for Season one. Any change is announced a full day before it takes effect.</p>
     </div>
   </div>
 </section>

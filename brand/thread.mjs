@@ -134,6 +134,6 @@ render(dark(`
   ${EYE(150, "LIVE NOW  ·  NO WALLET NEEDED")}
   ${H1(360, "Build a portfolio.", "#fff", 110)}
   ${H1(480, "Spin the wheel.", "#fff", 110)}
-  ${H1(600, "fantasystockleague.app", GREEN, 92)}
+  ${H1(600, "playhourly.app", GREEN, 92)}
   ${SUB(690, "Contract address and first round time posted here.")}
 `), "brand/thread-8.png");

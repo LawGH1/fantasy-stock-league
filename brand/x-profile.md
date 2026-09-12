@@ -14,7 +14,7 @@ Hourly portfolio rounds on Robinhood Chain, scored by on-chain prices. $HOURLY
 Robinhood Chain
 
 ## Website field
-https://fantasy-stock-league-delta.vercel.app   (swap to the .app/.xyz domain once it is connected)
+https://playhourly.app   (swap to the .app/.xyz domain once it is connected)
 
 ## Profile picture
 brand/pfp.png  (800x800, upload as is; X crops it to a circle, the F stays centered)
