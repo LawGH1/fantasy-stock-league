@@ -65,7 +65,7 @@ Not available to US persons, in line with the stock tokens the league is scored 
 ### Start
 
 Build a portfolio now, no wallet needed: [domain]
-Follow @FantasyStockRH for the contract address and the first round time.
+Follow @FSLonChain for the contract address and the first round time.
 
 ---
 

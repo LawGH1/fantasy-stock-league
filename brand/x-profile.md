@@ -1,7 +1,7 @@
 # X profile for Fantasy Stock League
 
 ## Handle
-@FantasyStockRH  (live: https://x.com/FantasyStockRH)
+@FSLonChain  (live: https://x.com/FSLonChain)
 
 ## Display name
 Fantasy Stock League

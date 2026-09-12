@@ -18,7 +18,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" v
   <path d="M1080 700 C 1180 700, 1180 300, 1300 300 S 1420 620, 1500 200" fill="none" stroke="#1DB874" stroke-width="4"/>
   <circle cx="1080" cy="700" r="7" fill="#1DB874"/><circle cx="1500" cy="200" r="7" fill="#1DB874"/>
   <line x1="110" y1="780" x2="1490" y2="780" stroke="${line}"/>
-  <text x="110" y="828" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${muted}">$FSL  ·  ROBINHOOD CHAIN  ·  @FantasyStockRH</text>
+  <text x="110" y="828" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${muted}">$FSL  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
 </svg>`;
 const png = new Resvg(svg, { fitTo: { mode: "width", value: 1600 }, font: { fontFiles, loadSystemFonts: false, defaultFontFamily: "Inter" } }).render().asPng();
 writeFileSync(out, png); console.log(`${out}  ${(png.length / 1024).toFixed(0)} KB`);
