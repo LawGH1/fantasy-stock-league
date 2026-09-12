@@ -1,7 +1,0 @@
-{
-  "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "fantasystockleague.app" }], "destination": "https://playhourly.app/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.fantasystockleague.app" }], "destination": "https://playhourly.app/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.playhourly.app" }], "destination": "https://playhourly.app/:path*", "permanent": true }
-  ]
-}
