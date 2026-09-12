@@ -1,4 +1,4 @@
-Introducing Fantasy Stock League on Robinhood Chain.
+Introducing Hourly on Robinhood Chain.
 
 Robinhood put real stocks on chain. Nvidia, Tesla, SpaceX, gold, GameStop, all trading 24/7 as tokens. Nobody built a game on top of them. We did.
 
@@ -14,9 +14,9 @@ The tech:
 
 Prices come straight from the deepest Uniswap pool for each stock token on Robinhood Chain. No oracle, no judge, no number we can change.
 
-Entries are a transfer of $FSL to a public league wallet. Payouts are transactions from it. The scoring code is public so anyone can rerun a round and get the same table.
+Entries are a transfer of $HOURLY to a public league wallet. Payouts are transactions from it. The scoring code is public so anyone can rerun a round and get the same table.
 
-$FSL is the league's chips. 85% of every entry goes to the pot, 10% buys $FSL back from the pool, 5% runs the league. Hold the threshold and one portfolio an hour is free.
+$HOURLY is the league's chips. 85% of every entry goes to the pot, 10% buys $HOURLY back from the pool, 5% runs the league. Hold the threshold and one portfolio an hour is free.
 
 Launching on Pons with locked liquidity. No team allocation beyond a small published reserve, locked on chain for three months.
 

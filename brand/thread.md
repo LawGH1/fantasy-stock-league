@@ -3,7 +3,7 @@
 1/  (image: thread-1.png)
 Draft five stocks. Beat the chain. Paid every hour.
 
-Fantasy Stock League is coming to Robinhood Chain.
+Hourly is coming to Robinhood Chain.
 
 2/  (image: thread-2.png)
 One round. One hour.
@@ -33,7 +33,7 @@ Top ten split the pot.
 7/  (image: thread-7.png)
 Where every entry goes.
 
-85% to the pot. 10% buys $FSL back. 5% runs the league.
+85% to the pot. 10% buys $HOURLY back. 5% runs the league.
 
 8/  (image: thread-8.png)
 Live now, no wallet needed.

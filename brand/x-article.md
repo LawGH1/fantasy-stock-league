@@ -1,14 +1,14 @@
 # X Article (Premium long-form). Title, then body. Post from the Articles tab, add the teaser card as the cover.
 
 ## Title
-Fantasy Stock League: draft five stocks, paid every hour
+Hourly: draft five stocks, paid every hour
 
 ## Cover image
 brand/teaser.png
 
 ## Body
 
-Wall Street has fantasy leagues for everything except the market itself. That is the gap. Fantasy Stock League is a game on Robinhood Chain where your portfolio is real tokenized stocks, your score is their real on-chain price move, and a new round pays out at the top of every hour.
+Wall Street has fantasy leagues for everything except the market itself. That is the gap. Hourly is a game on Robinhood Chain where your portfolio is real tokenized stocks, your score is their real on-chain price move, and a new round pays out at the top of every hour.
 
 No app to install. No account to make. A portfolio, sixty minutes of price moves, and a payout.
 
@@ -36,17 +36,17 @@ Ten places paid means a decent hour gets something back, not just a perfect one.
 
 ### The token
 
-$FSL is the league's chips. You buy in with it, you get paid in it, and the pot buys it back every hour.
+$HOURLY is the league's chips. You buy in with it, you get paid in it, and the pot buys it back every hour.
 
 Where each entry goes:
 
 85% to the prize pot, split among the top ten at the close.
-10% to a buyback that buys $FSL from the pool. Bought tokens seed future pots or are burned, and which one is posted daily.
+10% to a buyback that buys $HOURLY from the pool. Bought tokens seed future pots or are burned, and which one is posted daily.
 5% to the league, which keeps the scoring engine and the site running.
 
 Hold the holder threshold and one portfolio an hour is free. That is the reason to keep a bag rather than flip it.
 
-$FSL launches on Pons with a permanently locked liquidity pool. There is no team allocation beyond a small published reserve that seeds the first pots, and that reserve is locked on chain for three months.
+$HOURLY launches on Pons with a permanently locked liquidity pool. There is no team allocation beyond a small published reserve that seeds the first pots, and that reserve is locked on chain for three months.
 
 ### Why you can trust the numbers
 
@@ -72,7 +72,7 @@ Follow @FSLonChain for the contract address and the first round time.
 # Thread version (if you would rather post it as a thread instead of an Article)
 
 1/
-Fantasy Stock League is coming to Robinhood Chain.
+Hourly is coming to Robinhood Chain.
 
 Draft five tokenized stocks. Their real on-chain price moves are your score. A new round pays out at the top of every hour, 24/7.
 
@@ -99,9 +99,9 @@ The split is fixed and published:
 Ten places paid. A decent hour gets something back.
 
 5/
-$FSL is the league's chips. Buy in with it, get paid in it.
+$HOURLY is the league's chips. Buy in with it, get paid in it.
 
-Every entry: 85% to the pot, 10% buys $FSL back from the pool, 5% runs the league.
+Every entry: 85% to the pot, 10% buys $HOURLY back from the pool, 5% runs the league.
 
 Hold the threshold and one portfolio an hour is free.
 

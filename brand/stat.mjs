@@ -12,13 +12,13 @@ const size = big.length <= 5 ? 220 : big.length <= 9 ? 170 : 130;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
   <rect width="1600" height="900" fill="${bg}"/>
-  <text x="110" y="140" font-family="Fraunces" font-weight="800" font-size="34" fill="${ink}">Fantasy Stock League</text>
+  <text x="110" y="140" font-family="Fraunces" font-weight="800" font-size="34" fill="${ink}">Hourly</text>
   <text x="110" y="500" font-family="Fraunces" font-weight="800" font-size="${size}" fill="${ink}">${esc(big)}</text>
   <text x="110" y="580" font-family="Inter" font-weight="500" font-size="44" fill="${muted}">${esc(label)}</text>
   <path d="M1080 700 C 1180 700, 1180 300, 1300 300 S 1420 620, 1500 200" fill="none" stroke="#1DB874" stroke-width="4"/>
   <circle cx="1080" cy="700" r="7" fill="#1DB874"/><circle cx="1500" cy="200" r="7" fill="#1DB874"/>
   <line x1="110" y1="780" x2="1490" y2="780" stroke="${line}"/>
-  <text x="110" y="828" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${muted}">$FSL  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
+  <text x="110" y="828" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${muted}">$HOURLY  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
 </svg>`;
 const png = new Resvg(svg, { fitTo: { mode: "width", value: 1600 }, font: { fontFiles, loadSystemFonts: false, defaultFontFamily: "Inter" } }).render().asPng();
 writeFileSync(out, png); console.log(`${out}  ${(png.length / 1024).toFixed(0)} KB`);

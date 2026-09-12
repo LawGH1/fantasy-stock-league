@@ -20,11 +20,11 @@ const teaser = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900
   <path d="M0 760 L200 720 L380 745 L560 690 L740 710 L920 640 L1060 668 L1200 600 L1340 615 L1470 520 L1600 480" fill="none" stroke="#1DB874" stroke-width="6" stroke-linejoin="round"/>
   ${badge("GME", 1060, 668, 46)}${badge("AAPL", 1200, 600, 46)}${badge("TSLA", 1340, 615, 46)}${badge("NVDA", 1470, 520, 46)}
   <text x="100" y="150" font-family="IBM Plex Mono" font-weight="600" font-size="22" letter-spacing="5" fill="#1DB874">COMING TO ROBINHOOD CHAIN</text>
-  <text x="100" y="300" font-family="Fraunces" font-weight="800" font-size="124" fill="#ffffff">Fantasy</text>
-  <text x="100" y="430" font-family="Fraunces" font-weight="800" font-size="124" fill="#ffffff">Stock League</text>
+  <text x="100" y="330" font-family="Fraunces" font-weight="800" font-size="160" fill="#ffffff">Hourly</text>
+  <text x="100" y="430" font-family="Fraunces" font-weight="600" font-style="italic" font-size="64" fill="#1DB874">the stock draft that pays every hour</text>
   <text x="100" y="530" font-family="Inter" font-weight="500" font-size="36" fill="#C9D0D8">Draft five stocks. Beat the chain. <tspan fill="#1DB874">Paid every hour.</tspan></text>
   <text x="100" y="600" font-family="Inter" font-weight="500" font-size="26" fill="#7A8592">A new round every hour, 24/7. Top ten split the pot. Scored by on-chain prices.</text>
-  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$FSL  ·  @FSLonChain</text>
+  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY  ·  @FSLonChain</text>
 </svg>`;
 
 // 1600x900 three-step card
@@ -46,7 +46,7 @@ const howto = `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900"
   ${badge("NVDA", 160, 660, 30)}${badge("TSLA", 232, 660, 30)}${badge("GME", 304, 660, 30)}${badge("AAPL", 376, 660, 30)}${badge("COIN", 448, 660, 30)}
   <text x="640" y="672" font-family="IBM Plex Mono" font-weight="600" font-size="22" fill="#F2B544">NEXT ROUND 00:34:12</text>
   <text x="1096" y="672" font-family="IBM Plex Mono" font-weight="600" font-size="22" fill="#1DB874">+2.53%  →  1st place</text>
-  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$FSL  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
+  <text x="100" y="820" font-family="IBM Plex Mono" font-weight="600" font-size="20" letter-spacing="3" fill="#7A8592">$HOURLY  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>
 </svg>`;
 
 function render(svg, out, width) {

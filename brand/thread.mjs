@@ -10,7 +10,7 @@ const INK = "#0F1419", CREAM = "#F5F1E8", GREEN = "#1DB874", MUTED_D = "#98A2AE"
 const GRID = `<pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1.5"/></pattern>`;
 const badge = (t, x, y, r) => `<g transform="translate(${x} ${y})"><circle r="${r + 5}" fill="${INK}"/><circle r="${r}" fill="#fff"/><image href="${logo(t)}" x="${-r}" y="${-r}" width="${r * 2}" height="${r * 2}" clip-path="url(#c${r})" preserveAspectRatio="xMidYMid slice"/></g>`;
 const clip = r => `<clipPath id="c${r}"><circle r="${r}"/></clipPath>`;
-const foot = (dark) => `<text x="100" y="830" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${dark ? MUTED_D : MUTED_L}">$FSL  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>`;
+const foot = (dark) => `<text x="100" y="830" font-family="IBM Plex Mono" font-weight="600" font-size="18" letter-spacing="3" fill="${dark ? MUTED_D : MUTED_L}">$HOURLY  ·  ROBINHOOD CHAIN  ·  @FSLonChain</text>`;
 const dark = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>${GRID}${clip(46)}${clip(40)}${clip(30)}</defs><rect width="${W}" height="${H}" fill="${INK}"/><rect width="${W}" height="${H}" fill="url(#grid)"/>${inner}${foot(true)}</svg>`;
 const light = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs>${clip(46)}${clip(40)}${clip(30)}</defs><rect width="${W}" height="${H}" fill="${CREAM}"/>${inner}${foot(false)}</svg>`;
 const render = (svg, out) => { const png = new Resvg(svg, { fitTo: { mode: "width", value: W }, font: { fontFiles, loadSystemFonts: false, defaultFontFamily: "Inter" } }).render().asPng(); writeFileSync(out, png); console.log(out, (png.length / 1024).toFixed(0) + " KB"); };
@@ -20,7 +20,7 @@ const EYE = (y, text, fill = GREEN) => `<text x="100" y="${y}" font-family="IBM 
 
 // 1. hook
 render(dark(`
-  ${EYE(150, "FANTASY STOCK LEAGUE  ·  ROBINHOOD CHAIN")}
+  ${EYE(150, "Hourly  ·  ROBINHOOD CHAIN")}
   ${H1(330, "Draft <tspan font-weight='600' font-style='italic' fill='" + GREEN + "'>five</tspan> stocks.", "#fff", 120)}
   ${H1(460, "Beat the chain.", "#fff", 120)}
   ${H1(590, "Paid every hour.", GREEN, 120)}
@@ -120,11 +120,11 @@ render(dark(`
 
 // 7. token split
 render(light(`
-  ${EYE(150, "$FSL", "#128A56")}
+  ${EYE(150, "$HOURLY", "#128A56")}
   ${H1(330, "Where every entry goes.", INK, 88)}
   <g font-family="Fraunces" font-weight="800">
     <rect x="100" y="420" width="1200" height="110" rx="16" fill="${GREEN}"/><text x="130" y="497" font-size="64" fill="${INK}">85%</text><text x="330" y="490" font-family="Inter" font-weight="600" font-size="34" fill="${INK}">Prize pot. Paid to the top ten every hour.</text>
-    <rect x="100" y="550" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="612" font-size="48" fill="${INK}">10%</text><text x="330" y="606" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">Buyback. Buys $FSL from the pool.</text>
+    <rect x="100" y="550" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="612" font-size="48" fill="${INK}">10%</text><text x="330" y="606" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">Buyback. Buys $HOURLY from the pool.</text>
     <rect x="100" y="660" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="722" font-size="48" fill="${INK}">5%</text><text x="330" y="716" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">League. Keeps the engine running.</text>
   </g>
 `), "brand/thread-7.png");

@@ -6,11 +6,9 @@
   <rect width="800" height="800" fill="#0F1419"/>
   <rect width="800" height="800" fill="url(#grid)"/>
   <rect width="800" height="800" fill="url(#glow)"/>
-  <text x="400" y="430" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="290" letter-spacing="-6" fill="#ffffff">FSL</text>
-  <!-- mini chart under the letters -->
-  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478 L620 660 L190 660 Z" fill="url(#area)"/>
-  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478" fill="none" stroke="#1DB874" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#0F1419" stroke="#1DB874" stroke-width="8">
-    <circle cx="290" cy="552" r="11"/><circle cx="470" cy="512" r="11"/><circle cx="620" cy="478" r="11"/>
-  </g>
+  <!-- the hour ring: 45 of 60 minutes filled, with the H inside -->
+  <circle cx="400" cy="400" r="250" fill="none" stroke="#2A333D" stroke-width="34"/>
+  <circle cx="400" cy="400" r="250" fill="none" stroke="#1DB874" stroke-width="34" stroke-linecap="round" stroke-dasharray="1571" stroke-dashoffset="393" transform="rotate(-90 400 400)"/>
+  <circle cx="400" cy="150" r="22" fill="#0F1419" stroke="#1DB874" stroke-width="10"/>
+  <text x="400" y="478" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="260" fill="#ffffff">H</text>
 </svg>

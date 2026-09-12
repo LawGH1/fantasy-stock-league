@@ -1,5 +1,5 @@
 // Builds pfp.png, banner.png, favicon-192.png.  Run:  node brand/build.mjs
-// Concept: minimal with one layer of depth. Faint grid, soft green glow, FSL in white, a green price line.
+// Concept: minimal with one layer of depth. Faint grid, soft green glow, HOURLY in white, a green price line.
 // On the banner, five stock logos sit on the line as its rising points.
 import { Resvg } from "@resvg/resvg-js";
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -17,13 +17,11 @@ const pfp = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" vi
   <rect width="800" height="800" fill="#0F1419"/>
   <rect width="800" height="800" fill="url(#grid)"/>
   <rect width="800" height="800" fill="url(#glow)"/>
-  <text x="400" y="430" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="290" letter-spacing="-6" fill="#ffffff">FSL</text>
-  <!-- mini chart under the letters -->
-  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478 L620 660 L190 660 Z" fill="url(#area)"/>
-  <path d="M190 590 L290 552 L370 570 L470 512 L550 530 L620 478" fill="none" stroke="#1DB874" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#0F1419" stroke="#1DB874" stroke-width="8">
-    <circle cx="290" cy="552" r="11"/><circle cx="470" cy="512" r="11"/><circle cx="620" cy="478" r="11"/>
-  </g>
+  <!-- the hour ring: 45 of 60 minutes filled, with the H inside -->
+  <circle cx="400" cy="400" r="250" fill="none" stroke="#2A333D" stroke-width="34"/>
+  <circle cx="400" cy="400" r="250" fill="none" stroke="#1DB874" stroke-width="34" stroke-linecap="round" stroke-dasharray="1571" stroke-dashoffset="393" transform="rotate(-90 400 400)"/>
+  <circle cx="400" cy="150" r="22" fill="#0F1419" stroke="#1DB874" stroke-width="10"/>
+  <text x="400" y="478" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="260" fill="#ffffff">H</text>
 </svg>`;
 
 const banner = `<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
@@ -36,9 +34,10 @@ const banner = `<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500
   <path d="M0 400 L160 372 L300 392 L460 350 L640 366 L820 320 L1000 340 L1110 290 L1220 305 L1330 235 L1440 200 L1500 175 L1500 500 L0 500 Z" fill="url(#area)"/>
   <path d="M0 400 L160 372 L300 392 L460 350 L640 366 L820 320 L1000 340 L1110 290 L1220 305 L1330 235 L1440 200 L1500 175" fill="none" stroke="#1DB874" stroke-width="5" stroke-linejoin="round" stroke-opacity="0.9"/>
   <!-- left copy (left 300px clear for the avatar) -->
-  <text x="340" y="196" font-family="Fraunces" font-weight="800" font-size="58" fill="#ffffff">Fantasy Stock League</text>
+  <g transform="translate(340 168)"><circle cx="0" cy="0" r="22" fill="none" stroke="#2A333D" stroke-width="6"/><circle cx="0" cy="0" r="22" fill="none" stroke="#1DB874" stroke-width="6" stroke-linecap="round" stroke-dasharray="138" stroke-dashoffset="35" transform="rotate(-90)"/></g>
+  <text x="378" y="196" font-family="Fraunces" font-weight="800" font-size="72" fill="#ffffff">Hourly</text>
   <text x="340" y="252" font-family="Inter" font-weight="500" font-size="25" fill="#C9D0D8">Draft five stocks. <tspan fill="#1DB874">Paid every hour.</tspan></text>
-  <text x="340" y="298" font-family="IBM Plex Mono" font-weight="600" font-size="14" letter-spacing="3" fill="#7A8592">$FSL  ·  ROBINHOOD CHAIN</text>
+  <text x="340" y="298" font-family="IBM Plex Mono" font-weight="600" font-size="14" letter-spacing="3" fill="#7A8592">$HOURLY  ·  ROBINHOOD CHAIN</text>
   <!-- five logos on the line -->
   ${badge("GME", 1000, 340, 40)}
   ${badge("AAPL", 1110, 290, 40)}

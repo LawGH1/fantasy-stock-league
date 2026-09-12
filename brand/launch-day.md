@@ -8,7 +8,7 @@ Fantasy stocks should be simple.
 
 Draft five. Beat the chain. Paid every hour.
 
-That's why we built Fantasy Stock League on Robinhood Chain.
+That's why we built Hourly on Robinhood Chain.
 
 Play now: [domain]
 
@@ -28,17 +28,17 @@ Image: none, or the wallet address as a card
 ## T+1 hr  Round 1 settled
 Round 1 is settled.
 
-[N] portfolios entered. [X] $FSL paid to the top ten.
+[N] portfolios entered. [X] $HOURLY paid to the top ten.
 Winning portfolio: [5 tickers], [+x.xx%].
 
 Receipts: [explorer link to the payout txs]
 
-Image: stat card "[X] $FSL" / "paid out in round 1"
+Image: stat card "[X] $HOURLY" / "paid out in round 1"
 
 ## T+2 hr  Reserve locked
 To show commitment we locked the reserve for 3 months.
 
-[amount] $FSL locked until [date]. On-chain proof:
+[amount] $HOURLY locked until [date]. On-chain proof:
 [HoodLock link]
 
 Image: the HoodLock proof card (hoodlock.tech generates it)
@@ -46,10 +46,10 @@ Image: the HoodLock proof card (hoodlock.tech generates it)
 ## T+3 hr  First buyback
 First buyback is complete.
 
-[amount] $FSL bought from the pool with 10% of round 1 to 3 pots.
+[amount] $HOURLY bought from the pool with 10% of round 1 to 3 pots.
 [explorer link]
 
-Image: stat card "[amount] $FSL" / "bought back, hour 3"
+Image: stat card "[amount] $HOURLY" / "bought back, hour 3"
 
 ## T+6 hr  The case-study style post
 6 rounds. 60 payouts. 0 missed. Every one on chain.
@@ -63,11 +63,11 @@ Image: stat card "6 / 6" / "rounds paid on time"
 ## T+24 hr  Day one numbers
 Day one.
 
-[N] rounds · [N] portfolios · [X] $FSL paid · [Y] $FSL bought back
+[N] rounds · [N] portfolios · [X] $HOURLY paid · [Y] $HOURLY bought back
 
 Round [N+1] opens in [mm] minutes.
 
-Image: stat card "[X] $FSL" / "paid out on day one"
+Image: stat card "[X] $HOURLY" / "paid out on day one"
 
 ---
 

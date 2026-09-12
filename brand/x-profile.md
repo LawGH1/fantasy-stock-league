@@ -1,14 +1,14 @@
-# X profile for Fantasy Stock League
+# X profile for Hourly
 
 ## Handle
 @FSLonChain  (live: https://x.com/FSLonChain)
 
 ## Display name
-Fantasy Stock League
+Hourly
 
 ## Bio (160 char limit; this one is 149)
 Draft five stocks. Beat the chain. Paid every hour.
-Hourly portfolio rounds on Robinhood Chain, scored by on-chain prices. $FSL
+Hourly portfolio rounds on Robinhood Chain, scored by on-chain prices. $HOURLY
 
 ## Location field
 Robinhood Chain
@@ -33,7 +33,7 @@ Post 1 and 2 before the token exists. Post 3 the moment the contract is live. 4 
 Never post a CA before it is deployed and verified by you on Blockscout.
 
 ## Tweet 1 — the pitch (pin this)
-Fantasy Stock League is live on Robinhood Chain.
+Hourly is live on Robinhood Chain.
 
 Draft five tokenized stocks under a 12-point budget.
 Their real on-chain price moves are your score.
@@ -47,7 +47,7 @@ Try the draft, no wallet needed:
 How a round works, in one minute:
 
 2b
-Any time: build a five-stock portfolio and send $FSL to the league wallet. You are in the next round.
+Any time: build a five-stock portfolio and send $HOURLY to the league wallet. You are in the next round.
 
 2c
 :00 the round opens. Every stock's pool price is recorded. That is your starting line. No changes after.
@@ -56,7 +56,7 @@ Any time: build a five-stock portfolio and send $FSL to the league wallet. You a
 :00 next hour the round closes. Percent move per stock, average of five, top ten paid from the league wallet within minutes. Then the next round opens on the same tick.
 
 ## Tweet 3 — the contract
-$FSL is live on Pons.
+$HOURLY is live on Pons.
 
 CA: [contract address]
 League wallet: [address]
@@ -68,14 +68,14 @@ Entry price and holder threshold for Round 1 are on the site. First round opens 
 Round 1 is settled.
 
 Winning portfolio: [5 tickers] at [+x.xx%]
-Pot: [amount] $FSL
+Pot: [amount] $HOURLY
 Paid to top ten: [tx link]
 
 Round 2 is open. Enter before [time].
 
 ## Tweet 5 — the hook (post after a good round)
 Nvidia moved [x]% in the last hour.
-The portfolio that had it, gold and GameStop just took first place and [amount] $FSL.
+The portfolio that had it, gold and GameStop just took first place and [amount] $HOURLY.
 
 24 rounds a day. Next one opens in [mm] minutes.
 [site link]
@@ -91,7 +91,7 @@ Liquidity is locked on Pons, the league wallet is public, and every payout is a 
 Nothing to claim. Winners are paid straight to their wallet within minutes of the round closing.
 
 **"Why the tax / entry fee?"**
-There is no tax on trading $FSL. Entries fund the pot. 85% goes back out to the top ten every hour, 10% buys $FSL from the pool, 5% runs the league.
+There is no tax on trading $HOURLY. Entries fund the pot. 85% goes back out to the top ten every hour, 10% buys $HOURLY from the pool, 5% runs the league.
 
 **"Can I play from the US?"**
 No. The stock tokens the league is scored on are not offered to US persons, so neither is the league.
