@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hourly</title>
-<meta name="description" content="Draft five stocks. Beat the chain. Paid every hour. A fantasy league on Robinhood Chain with a new round every hour, scored by real on-chain prices, top ten paid at the top of the hour.">
+<meta name="description" content="Draft five stocks. Beat the chain. Paid every hour. A stock draft on Robinhood Chain with a new round every hour, scored by real on-chain prices, top ten paid at the top of the hour.">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <meta property="og:title" content="Hourly">
 <meta property="og:description" content="Draft five stocks. Beat the chain. Paid every hour. A new round every hour on Robinhood Chain.">
@@ -49,7 +49,7 @@
   nav{background:var(--ink);color:#fff}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
   .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:800;font-size:21px;text-decoration:none}
-  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--green);color:var(--ink);display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:19px}
+  .brand .mark{width:34px;height:34px;display:grid;place-items:center}
   .links{display:flex;gap:30px;font-size:14px;font-weight:500}
   .links a{text-decoration:none;color:var(--muted-dark)}
   .links a:hover{color:#fff}
@@ -275,7 +275,7 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#"><span class="mark">H</span>Hourly</a>
+    <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="#2A333D" stroke-width="4"/><circle cx="16" cy="16" r="12" fill="none" stroke="#1DB874" stroke-width="4" stroke-linecap="round" stroke-dasharray="75.4" stroke-dashoffset="19" transform="rotate(-90 16 16)"/></svg></span>Hourly</a>
     <div class="links">
       <a href="#week">The round</a>
       <a href="#draft">Draft</a>
@@ -301,7 +301,7 @@
     <div>
       <div class="eyebrow">Season one · Robinhood Chain</div>
       <h1>Draft <em>five</em> stocks.<br>Beat the chain.<br><span class="shine">Paid every hour.</span></h1>
-      <p class="lead" data-pre>Fantasy stocks at memecoin speed. Build a five-stock portfolio from Nvidia, gold, GameStop and more, the on-chain price is the scoreboard, and a new round opens at the top of every hour, all day, all night, weekends too.</p>
+      <p class="lead" data-pre>Stock drafting at memecoin speed. Build a five-stock portfolio from Nvidia, gold, GameStop and more, the on-chain price is the scoreboard, and a new round opens at the top of every hour, all day, all night, weekends too.</p>
       <div class="actions" data-pre>
         <a class="btn green magnet" href="#draft">Build your portfolio</a>
         <a class="btn outline-light magnet" href="#week">See how a round works</a>
@@ -330,10 +330,10 @@
       <p class="lead muted">No apps to install, no accounts to make. A portfolio, one hour of price moves, and a payout. Twenty-four rounds a day.</p>
     </div>
     <div class="timeline">
-      <div class="moment"><div class="when">Any time</div><h3>Enter</h3><p class="muted">Build a portfolio and send HOURLY to the league wallet. You're in the next round. Enter at 2:40, you play the 3:00 round.</p></div>
+      <div class="moment"><div class="when">Any time</div><h3>Enter</h3><p class="muted">Build a portfolio and send HOURLY to the prize wallet. You're in the next round. Enter at 2:40, you play the 3:00 round.</p></div>
       <div class="moment go"><div class="when">:00 · Open</div><h3>Prices recorded</h3><p class="muted">At the top of the hour the pool price of every stock in your portfolio is locked in. That's your starting line. No changes after this.</p></div>
       <div class="moment"><div class="when">:00 to :59</div><h3>Live scoring</h3><p class="muted">Each pick scores its percent move from the open. Your portfolio's score is the average of five. The leaderboard refreshes every minute.</p></div>
-      <div class="moment go"><div class="when">:00 · Close</div><h3>Payday, then the next round</h3><p class="muted">The top of the next hour locks the table. The top ten are paid from the league wallet within minutes, and the same tick opens the next round.</p></div>
+      <div class="moment go"><div class="when">:00 · Close</div><h3>Payday, then the next round</h3><p class="muted">The top of the next hour locks the table. The top ten are paid from the prize wallet within minutes, and the same tick opens the next round.</p></div>
     </div>
   </div>
 </section>
@@ -396,9 +396,9 @@
       <div class="rule"><div class="n">3</div><div><h3>Open to close</h3><p>Start is the pool price at the top of the hour. End is the top of the next hour. Score per pick is the percent change. Portfolio score is the plain average of five. Rounds run around the clock, weekends included, because the pools never close.</p></div></div>
       <div class="rule"><div class="n">4</div><div><h3>Enter as many portfolios as you like</h3><p>Each portfolio is its own entry and its own shot at the top ten. Hold the holder threshold of HOURLY and one portfolio an hour is free.</p></div></div>
       <div class="rule"><div class="n">5</div><div><h3>Locked means locked</h3><p>Once a round opens, no swaps. Enter after :00 and you're in the next round, not this one. Ties go to the portfolio that entered first.</p></div></div>
-      <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The league wallet is public, so the pot is visible all round. The scoring code is public, so anyone can rerun a round and get the same table. Payouts are automatic and every one is a transaction link, not a promise.</p></div></div>
+      <div class="rule"><div class="n">6</div><div><h3>Everything is checkable</h3><p>The prize wallet is public, so the pot is visible all round. The scoring code is public, so anyone can rerun a round and get the same table. Payouts are automatic and every one is a transaction link, not a promise.</p></div></div>
     </div>
-    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens the league is scored on. Entry price and holder threshold are posted before rounds open and don't change mid-round.</p>
+    <p class="muted" style="margin-top:56px;font-size:14px;max-width:720px">Not available to US persons, in line with the stock tokens Hourly is scored on. Entry price and holder threshold are posted before rounds open and don't change mid-round.</p>
   </div>
 </section>
 
@@ -409,7 +409,7 @@
       <div class="chapter">CHAPTER 05</div>
       <div class="eyebrow">Prizes</div>
       <h2>Top ten split the pot.</h2>
-      <p class="lead muted">The pot is every entry for the round plus whatever the league seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent hour gets something back, not just a perfect one.</p>
+      <p class="lead muted">The pot is every entry for the round plus whatever Hourly seeds. The split is fixed, so you know what each finish is worth before you enter. Ten places paid means a decent hour gets something back, not just a perfect one.</p>
       <p class="muted">A slice of every pot buys back HOURLY on the open market. Amounts and transaction links are posted after each round, twenty-four times a day.</p>
     </div>
     <div>
@@ -429,7 +429,7 @@
     <div>
       <div class="chapter">CHAPTER 06</div>
       <div class="eyebrow">The token</div>
-      <h2>$HOURLY is the league's chips.</h2>
+      <h2>$HOURLY is the game's chips.</h2>
       <p class="lead muted">You buy in with it, you get paid in it, and the pot buys it back every hour. It launches on Pons on Robinhood Chain with a permanently locked liquidity pool and a small published reserve that seeds the first pots.</p>
       <div class="ca" style="margin-top:26px"><span id="ca-text">Contract address posted here at launch</span></div>
       <div class="why">
@@ -444,7 +444,7 @@
       <div class="flow" style="margin-top:0">
         <div class="f"><div class="pc">85%</div><p><b>Prize pot.</b> Split among the top ten portfolios at the top of the hour.</p></div>
         <div class="f"><div class="pc">10%</div><p><b>Buyback.</b> Buys HOURLY from the pool. Bought tokens seed future pots or are burned, and which one is posted daily.</p></div>
-        <div class="f"><div class="pc">5%</div><p><b>League.</b> Keeps the scoring engine and this site running.</p></div>
+        <div class="f"><div class="pc">5%</div><p><b>Hourly.</b> Keeps the scoring engine and this site running.</p></div>
       </div>
       <p class="muted" style="margin-top:18px;font-size:14px">Proposed split for Season one. Final numbers are published before the first round opens and don't change without notice.</p>
     </div>
@@ -458,8 +458,8 @@
     <ul class="status" style="margin-top:28px">
       <li><span class="led g"></span><div><b>Draft engine.</b> Live prices, budget, five-slot portfolios. Running on this page now.</div></li>
       <li><span class="led g"></span><div><b>Scoring.</b> Percent moves from on-chain pool prices, recomputable by anyone. Code goes public before the first round.</div></li>
-      <li><span class="led a"></span><div><b>Entries.</b> A transfer of HOURLY to the league wallet. Opens with the token.</div></li>
-      <li><span class="led a"></span><div><b>Payouts.</b> Sent automatically from the league wallet within minutes of each round, posted with transaction links.</div></li>
+      <li><span class="led a"></span><div><b>Entries.</b> A transfer of HOURLY to the prize wallet. Opens with the token.</div></li>
+      <li><span class="led a"></span><div><b>Payouts.</b> Sent automatically from the prize wallet within minutes of each round, posted with transaction links.</div></li>
       <li><span class="led x"></span><div><b>Draft the traders.</b> The chain's top wallets as picks, scored by their PnL. After the first rounds run.</div></li>
     </ul>
   </div>
@@ -467,7 +467,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#"><span class="mark">H</span>Hourly</a>
+    <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="#2A333D" stroke-width="4"/><circle cx="16" cy="16" r="12" fill="none" stroke="#1DB874" stroke-width="4" stroke-linecap="round" stroke-dasharray="75.4" stroke-dashoffset="19" transform="rotate(-90 16 16)"/></svg></span>Hourly</a>
     <div><a href="https://x.com/FSLonChain" target="_blank" rel="noopener" style="color:#fff;text-decoration:none">@FSLonChain</a> · $HOURLY · Robinhood Chain · Nothing here is financial advice.</div>
   </div>
 </footer>
@@ -507,7 +507,7 @@ const ASSETS = [
 ];
 const BUDGET=12, MAXPICKS=5, REST=[9,7,6,5,5,4,4];
 let prices={}, picks=[], filter=0;
-try{ picks=JSON.parse(localStorage.getItem("fsl-team")||"[]").filter(t=>ASSETS.some(a=>a[0]===t)); }catch(e){ picks=[]; }
+try{ picks=JSON.parse(localStorage.getItem("hourly-team")||"[]").filter(t=>ASSETS.some(a=>a[0]===t)); }catch(e){ picks=[]; }
 
 const $=s=>document.querySelector(s);
 const byT=t=>ASSETS.find(a=>a[0]===t);
@@ -549,7 +549,7 @@ function renderTicker(){
   const items=ASSETS.map(a=>{const p=priceOf(a); if(!p) return ""; return `<span><b>${a[0]}</b>$${fmt(p.price)} <span class="${p.ch>=0?"up":"down"}">${p.ch>=0?"▲":"▼"} ${Math.abs(p.ch).toFixed(2)}%</span></span>`;}).join("");
   $("#ticker").innerHTML=items||"<span>Loading live prices from Robinhood Chain…</span>";
 }
-function save(){ try{localStorage.setItem("fsl-team",JSON.stringify(picks));}catch(e){} }
+function save(){ try{localStorage.setItem("hourly-team",JSON.stringify(picks));}catch(e){} }
 function toast(m){ $("#toast").textContent=m; setTimeout(()=>{ if($("#toast").textContent===m) $("#toast").textContent=""; },2500); }
 $("#clear").onclick=()=>{picks=[];save();render();};
 $("#enter").onclick=()=>toast(picks.length<MAXPICKS?"Fill all five slots first. Entries open when $HOURLY launches.":"Saved. Entries open when $HOURLY launches, and this portfolio will be ready to enter.");
