@@ -4,7 +4,7 @@ Rule: every post is a fact with a receipt. Short lines. No emojis, no "LFG", no 
 Cards come from `node brand/stat.mjs "<big text>" "<label>" <file>` — same style as Route's stat cards.
 
 ## T-0  Launch post (pin this, replaces the teaser as the pin)
-Fantasy stocks should be simple.
+Stock drafting should be simple.
 
 Draft five. Beat the chain. Paid every hour.
 
@@ -17,9 +17,9 @@ CA: [contract address]
 Image: brand/launch-card.png  (the wheel, or the A→B style minimal card)
 
 ## T+10 min  The wallet that pays
-Here is the league wallet that receives every entry and pays every round.
+Here is the prize wallet that receives every entry and pays every round.
 
-[league wallet address]
+[prize wallet address]
 
 Watch it any hour. Entries in, top ten out, buyback out. Nothing else.
 
@@ -75,7 +75,7 @@ Image: stat card "[X] $HOURLY" / "paid out on day one"
 - Teaser card + how-to card (already made). Pin the teaser until launch.
 - Wheel screen recording: "One spin, one stock. Five spins, a portfolio. Live now, no wallet needed."
 - Rulebook thread: six posts, one rule each.
-- Wallets + split post: deployer, reserve, league addresses; 85 / 10 / 5.
+- Wallets + split post: deployer, reserve, prize wallet addresses; 85 / 10 / 5.
 - "Round 1 opens at [time] ET. Entry price and holder threshold posted an hour before."
 
 # Tools Route used that we should too

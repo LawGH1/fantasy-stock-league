@@ -125,7 +125,7 @@ render(light(`
   <g font-family="Fraunces" font-weight="800">
     <rect x="100" y="420" width="1200" height="110" rx="16" fill="${GREEN}"/><text x="130" y="497" font-size="64" fill="${INK}">85%</text><text x="330" y="490" font-family="Inter" font-weight="600" font-size="34" fill="${INK}">Prize pot. Paid to the top ten every hour.</text>
     <rect x="100" y="550" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="612" font-size="48" fill="${INK}">10%</text><text x="330" y="606" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">Buyback. Buys $HOURLY from the pool.</text>
-    <rect x="100" y="660" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="722" font-size="48" fill="${INK}">5%</text><text x="330" y="716" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">League. Keeps the engine running.</text>
+    <rect x="100" y="660" width="1200" height="90" rx="16" fill="#fff" stroke="${LINE_L}"/><text x="130" y="722" font-size="48" fill="${INK}">5%</text><text x="330" y="716" font-family="Inter" font-weight="600" font-size="30" fill="${INK}">Hourly. Keeps the engine running.</text>
   </g>
 `), "brand/thread-7.png");
 

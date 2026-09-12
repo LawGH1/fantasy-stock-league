@@ -33,7 +33,7 @@ Top ten split the pot.
 7/  (image: thread-7.png)
 Where every entry goes.
 
-85% to the pot. 10% buys $HOURLY back. 5% runs the league.
+85% to the pot. 10% buys $HOURLY back. 5% runs Hourly.
 
 8/  (image: thread-8.png)
 Live now, no wallet needed.

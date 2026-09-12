@@ -47,19 +47,19 @@ Try the draft, no wallet needed:
 How a round works, in one minute:
 
 2b
-Any time: build a five-stock portfolio and send $HOURLY to the league wallet. You are in the next round.
+Any time: build a five-stock portfolio and send $HOURLY to the prize wallet. You are in the next round.
 
 2c
 :00 the round opens. Every stock's pool price is recorded. That is your starting line. No changes after.
 
 2d
-:00 next hour the round closes. Percent move per stock, average of five, top ten paid from the league wallet within minutes. Then the next round opens on the same tick.
+:00 next hour the round closes. Percent move per stock, average of five, top ten paid from the prize wallet within minutes. Then the next round opens on the same tick.
 
 ## Tweet 3 — the contract
 $HOURLY is live on Pons.
 
 CA: [contract address]
-League wallet: [address]
+prize wallet: [address]
 Reserve wallet: [address]
 
 Entry price and holder threshold for Round 1 are on the site. First round opens at [time] ET.
@@ -85,13 +85,13 @@ The portfolio that had it, gold and GameStop just took first place and [amount] 
 # Reply templates
 
 **"Is this a rug?"**
-Liquidity is locked on Pons, the league wallet is public, and every payout is a transaction link. Check the last round: [tx link].
+Liquidity is locked on Pons, the prize wallet is public, and every payout is a transaction link. Check the last round: [tx link].
 
 **"When claim?"**
 Nothing to claim. Winners are paid straight to their wallet within minutes of the round closing.
 
 **"Why the tax / entry fee?"**
-There is no tax on trading $HOURLY. Entries fund the pot. 85% goes back out to the top ten every hour, 10% buys $HOURLY from the pool, 5% runs the league.
+There is no tax on trading $HOURLY. Entries fund the pot. 85% goes back out to the top ten every hour, 10% buys $HOURLY from the pool, 5% runs Hourly.
 
 **"Can I play from the US?"**
-No. The stock tokens the league is scored on are not offered to US persons, so neither is the league.
+No. The stock tokens Hourly is scored on are not offered to US persons, so neither is Hourly.

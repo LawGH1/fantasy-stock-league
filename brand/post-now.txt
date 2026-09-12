@@ -7,9 +7,9 @@ Robinhood put real stocks on chain. Nvidia, Tesla, SpaceX, gold, GameStop, all t
 
 Draft five stocks under a 12-point budget. At the top of every hour a round opens and the on-chain price of each stock is recorded. Sixty minutes later it closes. Percent move per stock, average of five, top ten split the pot. Paid within minutes. 24 rounds a day.
 
-Prices come from the deepest Uniswap pool for each stock. No oracle, no judge. Entries are a transfer of $HOURLY to a public league wallet. Payouts are transactions from it. The scoring code is public.
+Prices come from the deepest Uniswap pool for each stock. No oracle, no judge. Entries are a transfer of $HOURLY to a public prize wallet. Payouts are transactions from it. The scoring code is public.
 
-85% of every entry goes to the pot. 10% buys $HOURLY back. 5% runs the league.
+85% of every entry goes to the pot. 10% buys $HOURLY back. 5% runs Hourly.
 
 The draft and the wheel are live now. No wallet needed.
 
@@ -63,7 +63,7 @@ REPLY 7  ·  attach: thread-7.png
 =====================================================
 Where every entry goes.
 
-85% to the pot. 10% buys $HOURLY back. 5% runs the league.
+85% to the pot. 10% buys $HOURLY back. 5% runs Hourly.
 
 
 =====================================================

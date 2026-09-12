@@ -8,15 +8,15 @@ Draft five stocks under a 12-point budget. Big names cost 4, quiet ones cost 1.
 
 At the top of every hour a round opens and the on-chain pool price of each stock in your portfolio is recorded. Sixty minutes later it closes. Each stock scores its percent move, your score is the average of five.
 
-The top ten portfolios split the pot. Payouts go out from the league wallet within minutes, and the next round opens on the same tick. 24 rounds a day, weekends included, because the pools never close.
+The top ten portfolios split the pot. Payouts go out from the prize wallet within minutes, and the next round opens on the same tick. 24 rounds a day, weekends included, because the pools never close.
 
 The tech:
 
 Prices come straight from the deepest Uniswap pool for each stock token on Robinhood Chain. No oracle, no judge, no number we can change.
 
-Entries are a transfer of $HOURLY to a public league wallet. Payouts are transactions from it. The scoring code is public so anyone can rerun a round and get the same table.
+Entries are a transfer of $HOURLY to a public prize wallet. Payouts are transactions from it. The scoring code is public so anyone can rerun a round and get the same table.
 
-$HOURLY is the league's chips. 85% of every entry goes to the pot, 10% buys $HOURLY back from the pool, 5% runs the league. Hold the threshold and one portfolio an hour is free.
+$HOURLY is the game's chips. 85% of every entry goes to the pot, 10% buys $HOURLY back from the pool, 5% runs Hourly. Hold the threshold and one portfolio an hour is free.
 
 Launching on Pons with locked liquidity. No team allocation beyond a small published reserve, locked on chain for three months.
 
